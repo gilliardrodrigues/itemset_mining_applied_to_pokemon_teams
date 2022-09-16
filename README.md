@@ -2,7 +2,7 @@
 
 ![Language](https://img.shields.io/badge/language-Python-dodgerblue)
 
-## 📜 Summary
+## 📜 Resumo
 Este repositório é dedicado ao trabalho prático I da disciplina de Mineração de Dados (2022/2), cuja proposta definida por mim trata-se da aplicação de técnicas de mineração de padrões frequentes numa base de dados contendo dados de equipes de pokémons utilizadas em batalhas competitivas na _tier_ popular _OU_ (_OverUsed_) no simulador de batalhas online _Pokémon Showdown_.
 
 ## ✔️ Progresso
