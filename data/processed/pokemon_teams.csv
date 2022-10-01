@@ -10,7 +10,7 @@ Tapu Koko,Hippowdon,Tornadus-Therian,Skarmory,Reuniclus,Toxapex
 Silvally-Electric,Zeraora,Landorus-Therian,Tapu Fini,Tornadus-Therian,Heatran
 Landorus-Therian,Corviknight,Toxapex,Blacephalon,Heatran,Dragapult
 Torkoal,Venusaur,Xatu,Tornadus-Therian,Heatran,Landorus-Therian
-Altaria,Toxapex ,Shedinja ,Magnezone ,Corviknight ,Blissey
+Altaria,Toxapex,Shedinja,Magnezone,Corviknight,Blissey
 Xurkitree,Heatran,Landorus-Therian,Tapu Fini,Tornadus-Therian,Weavile
 Xatu,Shedinja,Pyukumuku,Toxapex,Blissey,Corviknight
 Landorus-Therian,Dragapult,Magnezone,Tapu Fini,Kartana,Weavile
@@ -84,7 +84,7 @@ Mew,Haxorus,Landorus-Therian,Cloyster,Blaziken,Weavile
 Latios,Bisharp,Dragapult,Cloyster,Landorus-Therian,Tapu Koko
 Mew,Thundurus,Blacephalon,Kartana,Regieleki,Moltres-Galar
 Celesteela,Hippowdon,Skarmory,Clefable,Toxapex,Blissey
-Clefable ,Dragapult,Corviknight ,Landorus-Therian,Toxapex ,Volcarona 
+Clefable,Dragapult,Corviknight,Landorus-Therian,Toxapex,Volcarona
 Arctozolt,Ninetales-Alola,Weavile,Corviknight,Volcanion,Landorus-Therian
 Dragapult,Kartana,Bisharp,Melmetal,Landorus-Therian,Weavile
 Blacephalon,Corviknight,Landorus-Therian,Toxapex,Slowking-Galar,Weavile
@@ -144,7 +144,7 @@ Lycanroc-Dusk,Rotom-Wash,Dragapult,Mandibuzz,Excadrill,Tapu Bulu
 Kyurem,Zeraora,Toxapex,Landorus-Therian,Corviknight,Clefable
 Dragapult,Hydreigon,Toxapex,Zapdos,Scizor,Landorus-Therian
 Salazzle,Clefable,Corviknight,Blissey,Dragapult,Gastrodon-East
-Shedinja,Toxapex,Tangrowth ,Corviknight,Clefable,Blissey
+Shedinja,Toxapex,Tangrowth,Corviknight,Clefable,Blissey
 Togekiss,Landorus-Therian,Corviknight,Toxapex,Volcarona,Weavile
 Zapdos-Galar,Slowking,Rillaboom,Scizor,Landorus-Therian,Dragapult
 Scizor,Magnezone,Landorus-Therian,Kyurem,Tapu Koko,Tapu Fini
@@ -222,7 +222,7 @@ Tapu Fini,Buzzwole,Heatran,Mandibuzz,Landorus-Therian,Latios
 Mew,Volcarona,Garchomp,Togekiss,Slowking-Galar,Melmetal
 Chansey,Quagsire,Skarmory,Togekiss,Toxapex,Heatran
 Weavile,Ferrothorn,Clefable,Slowking,Landorus-Therian,Latios
-Rotom-Heat ,Hippowdon ,Clefable ,Corviknight ,Seismitoad ,Kyurem 
+Rotom-Heat,Hippowdon,Clefable,Corviknight,Seismitoad,Kyurem
 Snorlax,Jirachi,Toxapex,Clefable,Corviknight,Hippowdon
 Cinderace,Kyurem,Hippowdon,Clefable,Corviknight,Keldeo-Resolute
 Shedinja,Torkoal,Vaporeon,Clefable,Corviknight,Silvally-Grass
@@ -286,7 +286,7 @@ Weavile,Clefable,Excadrill,Mantine,Amoonguss,Dragapult
 Scizor,Slowbro,Clefable,Excadrill,Tyranitar,Tornadus-Therian
 Rillaboom,Heatran,Swampert,Clefable,Obstagoon,Tornadus-Therian
 Nidoking,Garchomp,Magearna,Keldeo,Dragapult,Tornadus-Therian
-Heracross,Zeraora,Clefable,Mandibuzz,Dragapult ,Amoonguss 
+Heracross,Zeraora,Clefable,Mandibuzz,Dragapult,Amoonguss
 Cinderace,Landorus-Therian,Tapu Koko,Bisharp,Magearna,Hawlucha
 Tapu Koko,Landorus-Therian,Hawlucha,Magearna,Azumarill,Dragonite
 Rillaboom,Kartana,Corviknight,Blissey,Hippowdon,Dragapult
@@ -374,7 +374,7 @@ Necrozma,Ninetales-Alola,Bisharp,Dragapult,Excadrill,Zapdos-Galar
 Zarude,Kartana,Landorus-Therian,Slowking,Heatran,Tapu Koko
 Kartana,Rillaboom,Mandibuzz,Slowking,Heatran,Zeraora
 Heatran,Tapu Bulu,Kartana,Mandibuzz,Zeraora,Hydreigon
-Shedinja ,Blissey,Toxapex ,Corviknight ,Buzzwole ,Quagsire 
+Shedinja,Blissey,Toxapex,Corviknight,Buzzwole,Quagsire
 Kyurem,Melmetal,Tyranitar,Tangrowth,Zapdos,Excadrill
 Victini,Volcarona,Weavile,Tapu Fini,Landorus-Therian,Regieleki
 Victini,Volcarona,Weavile,Tapu Fini,Landorus-Therian,Zapdos
@@ -388,7 +388,7 @@ Skarmory,Ditto,Toxapex,Blissey,Shedinja,Quagsire
 Ditto,Toxapex,Ferrothorn,Heatran,Landorus-Therian,Tornadus-Therian
 Ditto,Toxapex,Landorus-Therian,Melmetal,Clefable,Tornadus-Therian
 Shuckle,Blaziken,Azumarill,Rillaboom,Bisharp,Dragapult
-Toxapex ,Tornadus-Therian,Buzzwole ,Blissey,Mew ,Gastrodon-East 
+Toxapex,Tornadus-Therian,Buzzwole,Blissey,Mew,Gastrodon-East
 Weavile,Tapu Lele,Melmetal,Rotom-Wash,Landorus-Therian,Kartana
 Melmetal,Clefable,Toxapex,Heatran,Landorus-Therian,Weavile
 Clefable,Melmetal,Kyurem,Kommo-o,Corviknight,Toxapex
@@ -448,14 +448,14 @@ Crawdaunt,Cinderace,Rillaboom,Hawlucha,Mew,Gengar
 Clefable,Quagsire,Ditto,Blissey,Shedinja,Glalie
 Swoobat,Excadrill,Corviknight,Volcarona,Zeraora,Grimmsnarl
 Lycanroc-Dusk,Magnezone,Excadrill,Weezing-Galar,Rillaboom,Corviknight
-Cobalion,Blissey,Clefable,Dragapult,Tangrowth ,Corviknight
+Cobalion,Blissey,Clefable,Dragapult,Tangrowth,Corviknight
 Chandelure,Conkeldurr,Excadrill,Tyranitar,Amoonguss,Clefable
 Hatterene,Tyranitar,Excadrill,Amoonguss,Corviknight,Gengar
 Scizor,Rillaboom,Crawdaunt,Togekiss,Zeraora,Necrozma
 Hatterene,Tyranitar,Excadrill,Amoonguss,Corviknight,Comfey
 Salazzle,Clefable,Seismitoad,Mandibuzz,Dragapult,Zarude
 Primarina,Amoonguss,Skarmory,Hydreigon,Tyranitar,Excadrill
-Gallade,Ferrothorn,Hawlucha,Dragapult,Mandibuzz,Toxapex 
+Gallade,Ferrothorn,Hawlucha,Dragapult,Mandibuzz,Toxapex
 Hydreigon,Clefable,Magnezone,Corviknight,Excadrill,Hippowdon
 Obstagoon,Clefable,Dragapult,Hippowdon,Excadrill,Tangrowth
 Ninetales-Alola,Dragapult,Garchomp,Cloyster,Bisharp,Corviknight
@@ -564,7 +564,7 @@ Tapu Lele,Glastrier,Dragonite,Melmetal,Hydreigon,Nidoking
 Hawlucha,Kartana,Garchomp,Tapu Koko,Bisharp,Weavile
 Zapdos,Landorus-Therian,Urshifu-Rapid-Strike,Slowking-Galar,Tapu Fini,Bisharp
 Tapu Koko,Heatran,Landorus-Therian,Weavile,Tangrowth,Kartana
-Tapu Lele,Mew,Excadrill,Clefable,Toxapex ,Mandibuzz
+Tapu Lele,Mew,Excadrill,Clefable,Toxapex,Mandibuzz
 Alakazam,Tapu Lele,Mandibuzz,Dragapult,Garchomp,Melmetal
 Landorus-Therian,Tapu Fini,Dragonite,Magnezone,Weavile,Kartana
 Kyurem,Seismitoad,Tornadus-Therian,Toxapex,Corviknight,Clefable
@@ -1045,7 +1045,7 @@ Tornadus-Therian,Garchomp,Dragapult,Slowking-Galar,Landorus-Therian,Corviknight
 Magnezone,Kartana,Tapu Lele,Blissey,Slowbro,Landorus-Therian
 Venusaur,Victini,Darmanitan,Torkoal,Mandibuzz,Garchomp
 Bisharp,Haxorus,Landorus-Therian,Melmetal,Kartana,Toxapex
-Lanturn,Piloswine,Jumpluff,Haunter ,Blastoise,Qwilfish
+Lanturn,Piloswine,Jumpluff,Haunter,Blastoise,Qwilfish
 Pelipper,Barraskewda,Zapdos,Ferrothorn,Landorus-Therian,Kommo-o
 Pelipper,Barraskewda,Zapdos,Ferrothorn,Landorus-Therian,Kommo-o
 Nihilego,Tapu Lele,Magnezone,Weavile,Slowbro,Landorus-Therian
@@ -1418,7 +1418,7 @@ Excadrill,Kartana,Tyranitar,Landorus-Therian,Zapdos-Galar,Zeraora
 Tapu Koko,Kartana,Landorus-Therian,Tapu Fini,Mandibuzz,Slowking-Galar
 Kommo-o,Kyurem,Mew,Kartana,Dragonite,Melmetal
 Slowking-Galar,Corviknight,Clefable,Toxapex,Chansey,Mandibuzz
-Slowking-Galar,Corviknight,Clefable,Toxapex,Chansey,Tangrowth 
+Slowking-Galar,Corviknight,Clefable,Toxapex,Chansey,Tangrowth
 Corviknight,Tornadus-Therian,Heatran,Tapu Lele,Terrakion,Garchomp
 Latios,Nidoking,Heatran,Slowbro,Rillaboom,Mandibuzz
 Landorus-Therian,Regieleki,Hawlucha,Rillaboom,Garchomp,Slowbro-Galar
@@ -1636,7 +1636,7 @@ Heatran,Tapu Bulu,Urshifu-Rapid-Strike,Landorus-Therian,Corviknight,Weavile
 Volcarona,Magnezone,Rillaboom,Landorus-Therian,Dragapult,Urshifu-Rapid-Strike
 Ferrothorn,Tornadus-Therian,Zapdos-Galar,Kartana,Kyurem,Garchomp
 Corviknight,Heatran,Toxapex,Tapu Bulu,Kartana,Garchomp
-Kyurem,Rotom-Wash ,Heatran,Clefable,Landorus-Therian,Dragapult
+Kyurem,Rotom-Wash,Heatran,Clefable,Landorus-Therian,Dragapult
 Zarude-Dada,Moltres,Weavile,Ninjask,Grimmsnarl,Magearna
 Tapu Koko,Scyther,Magneton,Munchlax,Omanyte,Kyogre
 Ferroseed,Carvanha,Zacian-Crowned,Kyogre,Magneton,Rhydon
@@ -1857,7 +1857,7 @@ Kartana,Magnezone,Rillaboom,Corviknight,Dragapult,Landorus-Therian
 Clefable,Zapdos,Heatran,Urshifu-Rapid-Strike,Rillaboom,Landorus-Therian
 Kommo-o,Excadrill,Grimmsnarl,Zeraora,Kartana,Azumarill
 Tapu Koko,Garchomp,Tornadus-Therian,Conkeldurr,Blissey,Melmetal
-Chansey,Toxapex,Corviknight,Clefable,Blissey,Tangrowth 
+Chansey,Toxapex,Corviknight,Clefable,Blissey,Tangrowth
 Torkoal,Venusaur,Gastrodon-East,Heatran,Mandibuzz,Dragonite
 Tangela,Gurdurr,Wartortle,Krokorok,Mr. Mime-Galar,Corsola-Galar
 Cinderace,Magearna,Slowking,Rillaboom,Mandibuzz,Landorus-Therian
@@ -2007,15 +2007,15 @@ Tyranitar,Corviknight,Slowbro,Dracozolt,Excadrill,Tornadus-Therian
 Tyranitar,Corviknight,Slowbro,Dracozolt,Excadrill,Tornadus-Therian
 Melmetal,Pelipper,Volcanion,Seismitoad,Dragonite,Barraskewda
 Cinderace,Magearna,Latias,Excadrill,Dragapult,Urshifu
-Slowking-Galar,Corviknight,Clefable,Toxapex,Tangrowth ,Blissey
+Slowking-Galar,Corviknight,Clefable,Toxapex,Tangrowth,Blissey
 Zapdos,Pelipper,Ferrothorn,Barraskewda,Clefable,Mamoswine
 Victini,Urshifu-Rapid-Strike,Kyurem,Scizor,Rotom-Wash,Landorus-Therian
 Tapu Fini,Tapu Koko,Landorus-Therian,Buzzwole,Slowking-Galar,Garchomp
 Suicune,Azumarill,Quagsire,Clefable,Blissey,Corviknight
-Slowking-Galar,Corviknight,Clefable,Toxapex,Chansey,Tangrowth 
+Slowking-Galar,Corviknight,Clefable,Toxapex,Chansey,Tangrowth
 Zamazenta-Crowned,Dragonite,Slowking,Landorus-Therian,Heatran,Bisharp
-Blissey,Clefable,Toxapex,Corviknight,Quagsire,Tangrowth 
-Blissey,Clefable,Toxapex,Corviknight,Quagsire,Tangrowth 
+Blissey,Clefable,Toxapex,Corviknight,Quagsire,Tangrowth
+Blissey,Clefable,Toxapex,Corviknight,Quagsire,Tangrowth
 Landorus-Therian,Ferrothorn,Zapdos,Volcarona,Weavile,Tapu Fini
 Moltres-Galar,Regieleki,Magearna,Landorus-Therian,Garchomp,Spectrier
 Pheromosa,Urshifu,Landorus-Therian,Magearna,Tapu Fini,Kartana
@@ -2046,7 +2046,7 @@ Pelipper,Urshifu-Rapid-Strike,Slowking-Galar,Ferrothorn,Seismitoad,Zapdos
 Kartana,Torkoal,Venusaur,Zapdos,Ditto,Heatran
 Tyranitar,Excadrill,Corviknight,Slowking,Dracozolt,Tangrowth
 Tapu Fini,Magnezone,Kyurem,Tornadus-Therian,Dragapult,Tyranitar
-Tornadus-Therian,Slowking,Kartana,Weavile,Garchomp,Rillaboom 
+Tornadus-Therian,Slowking,Kartana,Weavile,Garchomp,Rillaboom
 Cinderace,Tapu Lele,Magearna,Urshifu,Slowbro,Garchomp
 Pelipper,Barraskewda,Tyranitar,Excadrill,Torkoal,Venusaur
 Tornadus-Therian,Dragapult,Weavile,Zeraora,Ferrothorn,Swampert
@@ -2077,7 +2077,7 @@ Zapdos,Kartana,Gastrodon-East,Heatran,Clefable,Rillaboom
 Dragapult,Cursola,Entei,Mandibuzz,Tapu Lele,Nidoking
 Zapdos,Bisharp,Dragapult,Nihilego,Slowbro,Landorus-Therian
 Buzzwole,Zygarde,Heatran,Toxapex,Mandibuzz,Tapu Koko
-Zamazenta-Crowned,Toxapex ,Corviknight,Clefable,Blissey,Garchomp
+Zamazenta-Crowned,Toxapex,Corviknight,Clefable,Blissey,Garchomp
 Blacephalon,Weavile,Corviknight,Landorus-Therian,Tapu Fini,Zeraora
 Rillaboom,Dragapult,Melmetal,Swampert,Mandibuzz,Volcarona
 Tangrowth,Tapu Koko,Landorus-Therian,Urshifu-Rapid-Strike,Scizor,Tapu Fini
@@ -2195,7 +2195,7 @@ Suicune,Rillaboom,Kartana,Garchomp,Clefable,Mandibuzz
 Zamazenta-Crowned,Garchomp,Slowbro,Clefable,Zeraora,Corviknight
 Qwilfish,Skarmory,Blissey,Ferrothorn,Excadrill,Bisharp
 Landorus-Therian,Tapu Koko,Hawlucha,Dragapult,Kartana,Bisharp
-Tyranitar,Excadrill,Slowking,Tangrowth ,Tornadus-Therian,Tapu Koko
+Tyranitar,Excadrill,Slowking,Tangrowth,Tornadus-Therian,Tapu Koko
 Garchomp,Dragapult,Slowking,Melmetal,Zapdos,Weavile
 Mew,Landorus-Therian,Dragapult,Clefable,Scizor,Zeraora
 Melmetal,Slowking,Dragapult,Urshifu-Rapid-Strike,Landorus-Therian,Corviknight
@@ -2247,7 +2247,7 @@ Dragalge,Zeraora,Urshifu-Rapid-Strike,Corviknight,Slowking-Galar,Landorus-Theria
 Weavile,Dragalge,Urshifu-Rapid-Strike,Corviknight,Slowking-Galar,Landorus-Therian
 Skarmory,Slowking,Urshifu-Rapid-Strike,Zeraora,Heatran,Rillaboom
 Garchomp,Barraskewda,Scolipede,Cloyster,Mew,Silvally-Fairy
-Tapu Bulu,Heatran,Toxapex ,Hippowdon,Weavile,Corviknight
+Tapu Bulu,Heatran,Toxapex,Hippowdon,Weavile,Corviknight
 Tapu Koko,Hawlucha,Mew,Kommo-o,Aegislash,Zeraora
 Sceptile,Salamence,Excadrill,Tapu Koko,Magnezone,Weavile
 Slowking-Galar,Buzzwole,Weavile,Garchomp,Corviknight,Dragapult
@@ -2320,7 +2320,7 @@ Pelipper,Volcanion,Thundurus-Therian,Ferrothorn,Barraskewda,Blastoise
 Slowking-Galar,Buzzwole,Tapu Fini,Landorus-Therian,Dragapult,Weavile
 Mew,Snorlax,Clefable,Toxapex,Garchomp,Tornadus-Therian
 Tyranitar,Tangrowth,Corviknight,Slowking,Excadrill,Dracozolt
-Toxapex ,Scizor,Blissey,Shedinja,Quagsire,Corviknight
+Toxapex,Scizor,Blissey,Shedinja,Quagsire,Corviknight
 Dragapult,Ferrothorn,Crawdaunt,Landorus-Therian,Kyurem,Heatran
 Dragapult,Ferrothorn,Crawdaunt,Landorus-Therian,Zapdos,Heatran
 Reuniclus,Urshifu-Rapid-Strike,Zeraora,Corviknight,Clefable,Garchomp
@@ -2350,7 +2350,7 @@ Hatterene,Dhelmise,Porygon2,Marowak-Alola,Melmetal,Cresselia
 Kyurem,Klefki,Torkoal,Garchomp,Venusaur,Victini
 Lycanroc-Dusk,Tapu Koko,Sigilyph,Corviknight,Krookodile,Incineroar
 Gyarados,Aerodactyl,Tapu Koko,Hawlucha,Bisharp,Volcarona
-Zamazenta-Crowned,Rillaboom ,Urshifu-Rapid-Strike,Landorus-Therian,Dragapult,Regieleki
+Zamazenta-Crowned,Rillaboom,Urshifu-Rapid-Strike,Landorus-Therian,Dragapult,Regieleki
 Reuniclus,Hippowdon,Zapdos-Galar,Slowking-Galar,Ferrothorn,Mandibuzz
 Tapu Koko,Landorus-Therian,Hawlucha,Magearna,Azumarill,Dragonite
 Landorus-Therian,Hydreigon,Slowking-Galar,Tapu Koko,Clefable,Tornadus-Therian
@@ -2544,7 +2544,7 @@ Tyranitar,Excadrill,Dracozolt,Corviknight,Slowbro,Clefable
 Uxie,Cresselia,Glastrier,Magearna,Marowak-Alola,Melmetal
 Scolipede,Latios,Scizor,Zeraora,Cloyster,Ninetales-Alola
 Regieleki,Rillaboom,Heatran,Clefable,Toxapex,Landorus
-Weavile,Dragonite,Kartana,Toxapex ,Magnezone,Landorus-Therian
+Weavile,Dragonite,Kartana,Toxapex,Magnezone,Landorus-Therian
 Bronzong,Rillaboom,Heatran,Skarmory,Slowking-Galar,Melmetal
 Bronzong,Rillaboom,Heatran,Skarmory,Toxapex,Magnezone
 Bronzong,Rillaboom,Heatran,Skarmory,Toxapex,Magnezone
@@ -2701,9 +2701,9 @@ Tapu Fini,Garchomp,Clefable,Tyranitar,Excadrill,Moltres
 Exploud,Latios,Urshifu,Slowking-Galar,Landorus-Therian,Tapu Fini
 Landorus-Therian,Garchomp,Zeraora,Tapu Fini,Hydreigon,Scizor
 Raboot,Linoone-Galar,Wartortle,Haunter,Hattrem,Pupitar
-Blissey,Toxapex ,Clefable,Corviknight,Hippowdon,Ditto
-Blissey,Toxapex ,Clefable,Corviknight,Rhyperior,Ditto
-Blissey,Toxapex ,Clefable,Corviknight,Swampert,Ditto
+Blissey,Toxapex,Clefable,Corviknight,Hippowdon,Ditto
+Blissey,Toxapex,Clefable,Corviknight,Rhyperior,Ditto
+Blissey,Toxapex,Clefable,Corviknight,Swampert,Ditto
 Pheromosa,Cinderace,Landorus,Slowbro,Corviknight,Clefable
 Melmetal,Clefable,Slowbro,Tyranitar,Corviknight,Excadrill
 Clefable,Tyranitar,Zygarde,Zapdos,Amoonguss,Jirachi
@@ -2870,7 +2870,7 @@ Cinderace,Slowbro,Magearna,Blissey,Landorus-Therian,Ferrothorn
 Cinderace,Slowbro,Magearna,Blissey,Tornadus-Therian,Garchomp
 Dragapult,Garchomp,Tapu Lele,Landorus-Therian,Corviknight,Clefable
 Zapdos-Galar,Shuckle,Nihilego,Spectrier,Rillaboom,Volcarona
-Slowking-Galar,Corviknight,Clefable,Toxapex,Chansey,Tangrowth 
+Slowking-Galar,Corviknight,Clefable,Toxapex,Chansey,Tangrowth
 Rotom-Heat,Slowking-Galar,Buzzwole,Urshifu-Rapid-Strike,Clefable,Rillaboom
 Victini,Regieleki,Tapu Koko,Landorus-Therian,Genesect,Porygon2
 Landorus-Therian,Tapu Koko,Crawdaunt,Garchomp,Hawlucha,Volcarona
@@ -2972,7 +2972,7 @@ Amoonguss,Mandibuzz,Kommo-o,Magearna,Dragapult,Urshifu
 Pelipper,Ferrothorn,Kingdra,Barraskewda,Magearna,Seismitoad
 Toxapex,Dragapult,Excadrill,Mandibuzz,Clefable,Rillaboom
 Hippowdon,Mandibuzz,Toxapex,Magearna,Cinderace,Dragapult
-Corviknight,Clefable,Hippowdon,Excadrill,Toxapex ,Hydreigon
+Corviknight,Clefable,Hippowdon,Excadrill,Toxapex,Hydreigon
 Venusaur,Charizard,Blissey,Torkoal,Cinderace,Corviknight
 Gengar,Dragapult,Clefable,Mandibuzz,Toxapex,Rhyperior
 Urshifu,Corviknight,Clefable,Hippowdon,Toxapex,Dragapult
@@ -3095,7 +3095,7 @@ Urshifu,Hawlucha,Rillaboom,Necrozma,Excadrill,Dragapult
 Jirachi,Azumarill,Hydreigon,Keldeo,Mew,Kommo-o
 Dragapult,Diggersby,Rotom-Heat,Hippowdon,Clefable,Ferrothorn
 Diggersby,Dragapult,Rotom-Heat,Hippowdon,Clefable,Ferrothorn
-Golurk,Tyranitar,Skarmory,Amoonguss ,Excadrill,Clefable
+Golurk,Tyranitar,Skarmory,Amoonguss,Excadrill,Clefable
 Pelipper,Clefable,Kyurem,Urshifu-Rapid-Strike,Ferrothorn,Kingdra
 Indeedee,Alakazam,Clefable,Gastrodon,Skarmory,Rotom-Heat
 Hydreigon,Druddigon,Magnezone,Bisharp,Dragapult,Volcarona
@@ -3177,8 +3177,8 @@ Torkoal,Charizard,Venusaur,Xatu,Blissey,Volcarona
 Pelipper,Kingdra,Seismitoad,Crawdaunt,Clefable,Corviknight
 Scolipede,Magnezone,Sandslash-Alola,Bisharp,Alakazam,Mimikyu
 Toxapex,Urshifu-Rapid-Strike,Excadrill,Skarmory,Hippowdon,Clefable
-Tangrowth ,Toxapex,Dragapult,Blissey,Jirachi,Mandibuzz
-Tangrowth ,Dragapult,Tyranitar,Volcarona,Quagsire,Clefable
+Tangrowth,Toxapex,Dragapult,Blissey,Jirachi,Mandibuzz
+Tangrowth,Dragapult,Tyranitar,Volcarona,Quagsire,Clefable
 Tyranitar,Excadrill,Magnezone,Skarmory,Amoonguss,Clefable
 Ditto,Hatterene,Toxapex,Blissey,Corviknight,Amoonguss
 Zarude,Clefable,Rotom-Heat,Ferrothorn,Tyranitar,Aegislash
@@ -3230,7 +3230,7 @@ Shuckle,Hydreigon,Zeraora,Alakazam,Togekiss,Dragapult
 Pincurchin,Raichu-Alola,Hawlucha,Mandibuzz,Ferrothorn,Volcarona
 Gyarados,Excadrill,Zeraora,Skarmory,Toxapex,Clefable
 Indeedee,Alakazam,Hawlucha,Mandibuzz,Toxapex,Excadrill
-Zoroark,Urshifu-Rapid-Strike,Weezing-Galar,Magearna-Original,Marowak-Alola,Slowbro 
+Zoroark,Urshifu-Rapid-Strike,Weezing-Galar,Magearna-Original,Marowak-Alola,Slowbro
 Krookodile,Gengar,Slowbro,Corviknight,Marowak-Alola,Druddigon
 Marowak-Alola,Hippowdon,Excadrill,Amoonguss,Mandibuzz,Dragapult
 Mew,Quagsire,Chansey,Rotom-Heat,Toxapex,Mandibuzz
@@ -3282,7 +3282,7 @@ Tapu Fini,Mamoswine,Zeraora,Corviknight,Heatran,Ferrothorn
 Milotic,Heatran,Rillaboom,Nidoking,Weavile,Zapdos
 Linoone-Galar,Piloswine,Corsola-Galar,Vullaby,Klang,Brionne
 Toxtricity,Clefable,Blissey,Skarmory,Rillaboom,Dragapult
-Alakazam,Kommo-o,Mandibuzz,Magnezone,Magearna,Slowbro 
+Alakazam,Kommo-o,Mandibuzz,Magnezone,Magearna,Slowbro
 Clefable,Mandibuzz,Rillaboom,Magnezone,Dragapult,Snorlax
 Torkoal,Cinderace,Venusaur,Excadrill,Hydreigon,Chansey
 Azumarill,Rillaboom,Tyranitar,Excadrill,Moltres,Latios
@@ -3332,7 +3332,7 @@ Crawdaunt,Togekiss,Mandibuzz,Clefable,Rillaboom,Rotom-Heat
 Hydreigon,Rillaboom,Dragapult,Kommo-o,Volcarona,Primarina
 Mandibuzz,Mew,Haxorus,Mamoswine,Gengar,Toxtricity
 Corviknight,Heatran,Pheromosa,Landorus-Therian,Garchomp,Tapu Fini
-Urshifu,Marowak-Alola,Hippowdon,Excadrill,Slowbro ,Mandibuzz
+Urshifu,Marowak-Alola,Hippowdon,Excadrill,Slowbro,Mandibuzz
 Corviknight,Landorus-Therian,Garchomp,Pheromosa,Melmetal,Rotom-Heat
 Heatran,Rillaboom,Skarmory,Zeraora,Slowbro,Blissey
 Landorus-Therian,Regieleki,Garchomp,Dragonite,Volcarona,Azumarill
@@ -3449,7 +3449,7 @@ Corviknight,Clefable,Weavile,Alakazam,Zeraora,Toxapex
 Obstagoon,Toxapex,Slowking-Galar,Cinderace,Landorus-Therian,Mandibuzz
 Rillaboom,Crawdaunt,Xatu,Kommo-o,Rotom-Heat,Excadrill
 Darmanitan-Galar,Corviknight,Ditto,Dragapult,Toxapex,Clefable
-Mandibuzz,Hippowdon,Zeraora,Volcarona,Toxapex ,Excadrill
+Mandibuzz,Hippowdon,Zeraora,Volcarona,Toxapex,Excadrill
 Lycanroc-Dusk,Marowak-Alola,Magearna,Mandibuzz,Slowbro,Kommo-o
 Claydol,Exploud,Torkoal,Dusknoir,Jirachi,Gardevoir
 Primarina,Salazzle,Clefable,Mandibuzz,Ferrothorn,Dragapult
@@ -3548,7 +3548,7 @@ Hippowdon,Excadrill,Corviknight,Gengar,Kommo-o,Rillaboom
 Dragapult,Excadrill,Gyarados,Mandibuzz,Rotom-Wash,Clefable
 Gengar,Clefable,Hippowdon,Excadrill,Mantine,Hydreigon
 Zarude,Dragapult,Excadrill,Hippowdon,Clefable,Mandibuzz
-Slowbro ,Marowak-Alola,Porygon2,Magearna,Azumarill,Hatterene
+Slowbro,Marowak-Alola,Porygon2,Magearna,Azumarill,Hatterene
 Mandibuzz,Clefable,Hippowdon,Volcarona,Crawdaunt,Zeraora
 Hippowdon,Dracozolt,Corviknight,Blissey,Excadrill,Latios
 Amoonguss,Dragapult,Clefable,Kommo-o,Mandibuzz,Magnezone
@@ -4134,7 +4134,7 @@ Marowak-Alola,Porygon2,Slowbro,Hatterene,Magearna,Azumarill
 Aegislash,Shuckle,Bisharp,Azumarill,Kyurem,Excadrill
 Corviknight,Azumarill,Dragapult,Clefable,Cinderace,Magearna
 Melmetal,Dragapult,Obstagoon,Zapdos,Slowking,Landorus-Therian
-Garchomp,Heatran,Ferrothorn,Swampert ,Scizor,Zeraora
+Garchomp,Heatran,Ferrothorn,Swampert,Scizor,Zeraora
 Kommo-o,Mandibuzz,Toxapex,Magearna,Gengar,Urshifu
 Zeraora,Clefable,Seismitoad,Corviknight,Dragapult,Obstagoon
 Lycanroc-Dusk,Blissey,Rotom-Heat,Tapu Lele,Rillaboom,Dragapult
@@ -4215,7 +4215,7 @@ Tyranitar,Tapu Lele,Raichu-Alola,Buzzwole,Landorus-Therian,Moltres
 Conkeldurr,Corviknight,Hydreigon,Aegislash,Seismitoad,Rotom-Heat
 Ferrothorn,Gastrodon-East,Flareon,Excadrill,Gengar,Clefable
 Slowking-Galar,Buzzwole,Aegislash,Landorus-Therian,Zeraora,Rillaboom
-Regieleki,Nihilego,Gourgeist-Super ,Skarmory,Hippowdon,Tapu Fini
+Regieleki,Nihilego,Gourgeist-Super,Skarmory,Hippowdon,Tapu Fini
 Dragapult,Corviknight,Toxapex,Darmanitan-Galar,Grimmsnarl,Cinderace
 Mienshao,Ferrothorn,Umbreon,Zapdos,Dragapult,Mamoswine
 Clefable,Rotom-Heat,Dragapult,Hatterene,Corviknight,Seismitoad
@@ -4231,7 +4231,7 @@ Seismitoad,Clefable,Corviknight,Rotom-Heat,Hydreigon,Melmetal
 Dragapult,Hippowdon,Mandibuzz,Toxapex,Magearna,Clefable
 Corviknight,Toxapex,Clefable,Ferrothorn,Blissey,Slowbro-Galar
 Tapu Lele,Rotom-Wash,Corviknight,Cinderace,Excadrill,Tyranitar
-Abomasnow,Arctozolt,Tapu Lele,Accelgor,Regieleki,Urshifu-Rapid-Strike 
+Abomasnow,Arctozolt,Tapu Lele,Accelgor,Regieleki,Urshifu-Rapid-Strike
 Regieleki,Glastrier,Genesect,Toxapex,Jirachi,Landorus-Therian
 Corviknight,Blissey,Landorus-Therian,Tapu Lele,Mamoswine,Tornadus-Therian
 Toxapex,Mandibuzz,Clefable,Magearna,Marowak-Alola,Rillaboom
