@@ -24,3 +24,4 @@ O projeto é estruturado conforme a descrição abaixo:
     |                  aplicação do algoritmo de mineração de padrões frequentes e EDA
     └── utils       -> funções úteis
 ```
+![Grafo](data/processed/grafo_resultante.png)
