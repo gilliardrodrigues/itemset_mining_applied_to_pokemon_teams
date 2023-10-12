@@ -12,21 +12,13 @@ logger = logging.getLogger(__name__)
 logger = get_logger(logger=logger)
 
 __all__ = [
-    'add_edge',
-    'add_edges_from_transaction_df',
-    'show_adj_matrix',
-    'get_nodes',
-    'get_adj_matrix',
-    'draw_graph',
-    'export_graph_viz',
-    'get_networkx_graph',
-    'export_to_gephi'
+    'UndirectedMultiGraph'
 ]
 
 
 class UndirectedMultiGraph:
 
-    def __init__(self, nodes):
+    def __init__(self, nodes: list):
         """
         Classe para criar um multi-grafo não direcionado representado por matriz de adjacência na forma de um dataframe.
 
@@ -51,7 +43,7 @@ class UndirectedMultiGraph:
         self.graph.loc[u, v] += 1
         self.graph.loc[v, u] += 1
 
-    def add_edges_from_transaction_df(self, df):
+    def add_edges_from_transaction_df(self, df: pd.DataFrame):
         """
         Monta a matriz de adjacência a partir de um dataframe de transações.
         Parâmetros
@@ -67,15 +59,15 @@ class UndirectedMultiGraph:
         """
         Exibe a matriz de adjacência.
         """
-        display(self.graph)
+        print(self.graph)
 
-    def get_nodes(self):
+    def get_nodes(self) -> list:
         """
         Retorna a lista de vértices do grafo.
         """
         return self.nodes
 
-    def get_adj_matrix(self):
+    def get_adj_matrix(self) -> pd.DataFrame:
         """
         Retorna o dataframe contendo a matriz de adjacência.
         """
@@ -102,20 +94,20 @@ class UndirectedMultiGraph:
             O grafo plotado.
         """
         plt.clf()
-        fig = plt.figure(figsize=(100, 50))
-        G = nx.from_pandas_adjacency(self.graph)
+        plt.figure(figsize=(100, 50))
+        g = nx.from_pandas_adjacency(self.graph)
 
-        pos = layout(G)
+        pos = layout(g)
         node_weights = list_of_pokemons.value_counts(sort=False)
-        edge_weights = [G[u][v]['weight'] for u, v in G.edges()]
+        edge_weights = [g[u][v]['weight'] for u, v in g.edges()]
 
-        nx.draw_networkx_nodes(G, pos, node_size=node_weights, node_color=range(G.number_of_nodes()), cmap=plt.cm.hsv)
-        nx.draw_networkx_edges(G, pos, width=edge_weights)
-        nx.draw_networkx_labels(G, pos, font_weight='bold', font_size=10, verticalalignment='baseline')
+        nx.draw_networkx_nodes(g, pos, node_size=node_weights, node_color=range(g.number_of_nodes()), cmap=plt.cm.hsv)
+        nx.draw_networkx_edges(g, pos, width=edge_weights)
+        nx.draw_networkx_labels(g, pos, font_weight='bold', font_size=10, verticalalignment='baseline')
 
-        return G
+        return g
 
-    def export_graph_viz(self, list_of_pokemons, layouts_dict: dict):
+    def export_graph_viz(self, list_of_pokemons: pd.Series, layouts_dict: dict):
         """
         Exporta o grafo como imagem.
         Parâmetros
@@ -143,13 +135,13 @@ class UndirectedMultiGraph:
         exporting_images.stop_watch()
         logger.info("Grafos exportados!")
 
-    def get_networkx_graph(self):
+    def get_networkx_graph(self) -> nx.Graph:
         """
         Retorna o grafo como nx.Graph.
         """
         return nx.from_pandas_adjacency(self.graph)
 
-    def export_to_gephi(self, graph, gefx_file_path):
+    def export_to_gephi(self, gefx_file_path):
         """
         Exporta o grafo como arquivo GEFX para utilizar no Gephi.
         Parâmetros
@@ -159,6 +151,6 @@ class UndirectedMultiGraph:
         """
         logger.info("Criando arquivo GEFX...")
         exporting_gefx = Clock("Exportação do grafo para o Gephi")
-        nx.write_gexf(graph, f'{gefx_file_path}' + 'graph.gexf')
+        nx.write_gexf(self.get_networkx_graph(), f'{gefx_file_path}' + 'graph.gexf')
         exporting_gefx.stop_watch()
-        logger.info(" Arquivo GEFX criado!")
+        logger.info("Arquivo GEFX criado!")
