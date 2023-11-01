@@ -6,7 +6,6 @@ import plotly.offline as pyo
 import pandas as pd
 from timeit import default_timer as timer
 from datetime import datetime
-pyo.init_notebook_mode()
 
 
 """
