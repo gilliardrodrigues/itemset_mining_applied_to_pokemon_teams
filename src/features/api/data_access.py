@@ -1,4 +1,8 @@
 import pandas as pd
+import sys
+
+source_path = "/home/gilliardrodrigues/itemset_mining_applied_to_pokemon_teams/src"
+sys.path.append(source_path)
 from utils.utils import frozenset_converter
 
 
@@ -9,18 +13,18 @@ __all__ = [
     'get_pokedex_df'
 ]
 
-DATA_PATH = 'C:\\Users\\User\\Documents\\jupyter_notebooks\\ufmg\\itemset_mining_applied_to_pokemon_teams\\data\\'
+DATA_PATH = '/home/gilliardrodrigues/itemset_mining_applied_to_pokemon_teams/data/'
 
 
 def get_sprites_df() -> pd.DataFrame:
 
-    sprites_df = pd.read_csv(DATA_PATH + 'processed\\sprites_showdown.csv')
+    sprites_df = pd.read_csv(DATA_PATH + 'processed/sprites_showdown.csv')
     return sprites_df
 
 
 def get_rules_df() -> pd.DataFrame:
 
-    rules_df = pd.read_csv(DATA_PATH + 'processed\\association_rules.csv',
+    rules_df = pd.read_csv(DATA_PATH + 'processed/association_rules.csv',
                            converters={
                                'antecedents': frozenset_converter,
                                'consequents': frozenset_converter
