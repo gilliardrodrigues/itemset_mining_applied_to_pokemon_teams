@@ -1,0 +1,12 @@
+aiohttp==3.8.6
+auto_mix_prep==0.2.0
+beautifulsoup4==4.11.2
+Flask==2.3.2
+Flask_Cors==3.0.10
+ipython==8.17.2
+matplotlib==3.7.2
+mlxtend==0.23.0
+networkx==3.2.1
+pandas==1.5.3
+plotly==5.16.1
+tqdm==4.66.1
