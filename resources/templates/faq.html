@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gill's Team Builder - FAQ</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css" />
+    <link rel="icon" href="../static/img/pokebola.png">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="cabecalho">
+            <img id="logo-pokebola" src="../static/img/pokebola.png">
+            <h2 id="titulo-cabecalho"><a href="index.html">Gill's Team Builder</a></h2>
+        </div>
+    </header>
+    <section>
+        <div id="container-perguntas">
+            <h3>Perguntas frequentes:</h3>
+            <button class="accordion"> • Qual o objetivo desta ferramenta?</button>
+            <div class="panel">
+                <p>O objetivo desta ferramenta é auxiliar aqueles que estão iniciando no <span class="faq-highlight">Pokémon Showdown</span>, especificamente na <span class="faq-highlight">tier OverUsed</span> 
+                    (OU) e não possuem muita experiência sobre o competitivo ou não possuem interesse de estudá-lo a fundo logo de início, mas gostariam de formar boas equipes. </p>
+            </div>
+            <button class="accordion">• Em que são baseadas as sugestões?</button>
+            <div class="panel">
+                <p>As sugestões são baseadas nas equipes utilizadas pelos <span class="faq-highlight">top 500</span> jogadores da <span class="faq-highlight">ladder Gen 9 OU</span> e o algoritmo por trás 
+                    da ferramenta faz uso de <span class="faq-highlight">aprendizado de máquina não supervisionado</span> para gerar as sugestões.</p>
+            </div>
+            <button class="accordion">• Com que frequência a base de dados é atualizada?</button>
+            <div class="panel">
+                <p>A base de dados contendo as equipes dos <span class="faq-highlight">top 500</span> jogadores da <span class="faq-highlight">ladder Gen 9 OU</span> é atualizada semanalmente e as 
+                    regras sobre as quais o algoritmo se baseia também.</p>
+            </div>
+            <button class="accordion">• O que significa a métrica de <span class="faq-highlight">Confiança</span>?</button>
+            <div class="panel">
+                <p>A <span class="faq-highlight">Confiança</span> é uma medida que indica a probabilidade de que uma relação entre dois itens em uma regra de associação seja verdadeira. 
+                    Em outras palavras, se um pokémon "A" está associado a um pokémon "B", a confiança mede a probabilidade de que, quando "A" é escolhido, "B" também é.</p>
+                <p>Quanto mais próximo de 100%, mais forte é a associação, enquanto que quanto mais próximo de 0, mais fraca. Uma sugestão de um pokémon "B" cuja <span class="faq-highlight">Confiança</span> é 80%
+                    significa que, em 80% das vezes em que um jogador escolhe o pokémon "A", também escolhe o pokémon "B" para sua equipe.
+                </p>
+            </div>
+            <button class="accordion">• O que significa a métrica de <span class="faq-highlight">Lift</span>?</button>
+            <div class="panel">
+                <p>O <span class="faq-highlight">Lift</span> expressa a chance de um pokémon "B" ser escolhido, se A for escolhido, considerando toda a popularidade de "B".<br>
+                - Se o <span class="faq-highlight">Lift</span> for igual a 1, isso significa que a ocorrência do pokémon "A" não afeta a ocorrência de "B". <br>
+                - Se for maior que 1, indica uma correlação positiva, sugerindo que a presença de um pokémon "X" em uma equipe aumenta a probabilidade de "Y" também ser escolhido para essa equipe.<br>
+                - Se for menor que 1, indica uma correlação negativa, sugerindo que a presença de um pokémon "X" na equipe diminui a probabilidade de "Y" também ser escolhido para essa equipe.
+                </p>
+            </div>
+            <button class="accordion">• Devo analisar as métricas juntas ou separas?</button>
+            <div class="panel">
+                <p>As métricas disponíveis se complementam. O ideal é considerá-las em conjunto, pois, por exemplo: se uma sugestão de pokémon possui <span class="faq-highlight">Confiança</span> elevada, 
+                    mas <span class="faq-highlight">Lift</span> baixo, significa que a presença de algum(s) pokémon(s) da equipe diminui a probabilidade desse pokémon sugerido ocorrer na mesma equipe, 
+                    o que nos diz que essa sugestão não é ideal, embora possua uma alta <span class="faq-highlight">Confiança</span> associada.
+                </p>
+            </div>
+            <button class="accordion">• O que significa não haver sugestões para uma determinada equipe?</button>
+            <div class="panel">
+                <p>Significa que o(s) pokémon(s) escolhido(s) por você não é frequentemente utilizado entre os <span class="faq-highlight">top 500</span> jogadores da <span class="faq-highlight">ladder Gen 9 OU</span>, o que pode ser um
+                    indício de que talvez esse(s) pokémon(s) não performe bem nessa modalidade do competitivo, mas você é livre para utilizá-lo!
+                </p>
+            </div>
+            <button class="accordion">• A ferramenta será disponibilizada para outras <span class="faq-highlight">tiers</span> do competitivo?</button>
+            <div class="panel">
+                <p>Sim!!! Por se tratar de uma ferramenta recente e em versão inicial, no momento as sugestões são apenas para a <span class="faq-highlight">tier Gen 9 OU</span>, mas
+                    aos poucos as outras <span class="faq-highlight">tiers</span> serão acrescentadas, portanto não desanime :)
+                </p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div id="rodape">
+            <p id="descricao-rodape">
+                <span id="titulo-rodape">Gill’s Team Builder</span><br>
+                Showdown’s Ladder-based Pokemon Team Builder
+            </p>
+            <p id="assinatura-rodape">
+                <span id="autor">Gilliard Rodrigues</span> | 2023
+            </p>
+            <div id="redes-sociais">
+                <img id="logo-instagram" src="../static/img/logo_instagram.png">
+                <p id="instagram">@gillrodrigues_</p>
+                <br>
+                <img id="logo-linkedin" src="../static/img/logo_linkedin.png">
+                <p id="linkedin">gilliard-rodrigues</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        for (let i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                // Fecha todos os painéis expandidos
+                var allPanels = document.getElementsByClassName("panel");
+                for (var j = 0; j < allPanels.length; j++) {
+                    allPanels[j].style.display = "none";
+                }
+
+                // Remove a classe "active" de todos os botões
+                var allAccordions = document.getElementsByClassName("accordion");
+                for (var k = 0; k < allAccordions.length; k++) {
+                    allAccordions[k].classList.remove("active");
+                }
+
+                // Adiciona a classe "active" apenas ao botão clicado
+                this.classList.toggle("active");
+
+                // Exibe ou oculta o painel associado ao botão clicado
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
+</html>
