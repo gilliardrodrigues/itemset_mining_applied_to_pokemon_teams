@@ -1,0 +1,528 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+/* Estilização geral: */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilizações do header: */
+#cabecalho {
+    position: fixed;
+    top: 0;
+    background: #1B1A1A;
+    display: flex;
+    align-items: center;
+    padding: 10px 2%;
+    height: 12vh;
+    width: 100vw;
+    z-index: 2;
+}
+
+#logo-pokebola {
+    width: 70px;
+    height: 70px;
+    display: inline;
+    margin: 10px;
+}
+
+#titulo-cabecalho {
+    font-family: 'Pokemon Solid';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 70px; 
+    color: #FFFFFF;
+}
+
+ul {
+    list-style-type: none; 
+    position: absolute; 
+    margin: 1rem 3%;
+    right: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-family: 'Pokemon Solid';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 70px; 
+}
+  
+
+/* Estilização do container: */
+body {
+    background-image: url(../img/minimalistic_background.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center 65%;
+}
+
+#container-slots {
+    position: relative;
+    width: 90%;
+    height: auto;
+    left: 50%; /* Posiciona no meio horizontal */
+    transform: translateX(-50%); /* Ajusta o deslocamento horizontal */
+    top: 9em;
+
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(2px);
+    border-radius: 71px;
+}
+
+.conjunto-slots {
+    display: flex;
+    justify-content: space-between; /* Distribui os slots igualmente */
+    align-items: center; /* Alinha os elementos verticalmente */
+    padding: 2%; 
+    flex-wrap: wrap;
+}
+
+.slot {
+    width: calc(30% - 3.33%);
+    max-width: 175px; 
+}
+
+.conteudo-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    margin: 0 3%;
+}
+
+.nomePokemonSlot {
+    font-family: 'Pokemon Solid';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    position: relative;
+    text-align: center;
+    top: -10px;
+    color: #1B1A1A;
+    margin-bottom: 10px;
+}
+
+.conjunto-barras {
+    display: flex;
+    justify-content: space-between; /* Distribui os slots igualmente */
+    align-items: center; /* Alinha os elementos verticalmente */
+    padding: 0% 2% 2%; 
+    flex-wrap: wrap;
+}
+
+.container-barra-pesquisa {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 0.5%;
+}
+
+.lupa {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.barra-pesquisa {
+    flex: 1;
+    width: calc(100% - 30px);
+    height: 44px;
+    text-indent: 24px;
+    text-align: center;
+    font-weight: bold;
+    background: #D9D9D9;
+    border-radius: 180px;
+}
+
+.autocomplete-suggestions {
+    position: absolute;
+    z-index: 9998;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.autocomplete-suggestion {
+    z-index: 9999;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #D9D9D9;
+    font-family: 'Inter';
+    font-size: 14px;
+    color: #706C6C;
+    text-align: center;
+    font-weight: bold;
+    background: #D9D9D9;
+}
+
+.autocomplete-suggestion:hover {
+    background-color: #1169EE;
+    color: #FFFFFF;
+}
+
+.autocomplete-suggestion.selected {
+    background-color: #1169EE;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+    font-weight: bold;
+}
+
+:-moz-placeholder {
+    text-align: center;
+    font-weight: bold;
+}
+
+#container-sugestoes {
+    position: absolute;
+    width: 90%;
+    height: 634px;
+    left: 66px;
+    top: 481px;
+
+    background: rgba(255, 255, 255, 0.66);
+    backdrop-filter: blur(2px);
+    border-radius: 71px;
+
+    overflow: auto;
+    display: none;
+    margin: 2% 0;
+}
+
+/* Estilização da tabela: */
+
+#inner-container-sugestoes {
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    table-layout: fixed;
+    position: relative;
+}
+
+table {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 31px;
+    text-align: center;
+    color: #000000;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 40px;
+    @media (max-width: 768px) {
+        border-spacing: 20px;
+    }
+}
+
+#clear-button {
+    float: right;
+    margin-right: 25px;
+    width: 25px;
+    /* Defina o tamanho desejado para o botão */
+    height: 25px;
+    cursor: pointer;
+}
+
+.linha {
+    backdrop-filter: blur(2px);
+    border-radius: 71px;
+}
+
+caption {
+    font-size: 22px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    text-align: left;
+    position: sticky; /* Adicione esta linha */
+    top: 0; /* Adicione esta linha */
+    z-index: 2; /* Adicione esta linha se necessário para garantir que esteja acima do conteúdo da tabela */
+}
+
+thead th {
+    padding: 10px;
+}
+
+.tooltip {
+    position: relative;
+    display: table-cell;
+}
+  
+.tooltip .tooltip-text {
+    visibility: hidden;
+    background-color: #555;
+    color: #fff;
+    font-size: 18px;
+    text-align: left;
+    border-radius: 6px;
+    padding: 6px;
+    position: absolute;
+    z-index: 1;
+    width: 250px;
+    bottom: 75%;
+    left: -5%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+  
+.tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+  
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Estilização do rodapé: */
+#rodape {
+    position: relative;
+    width: 100%;
+    height: 28%;
+    padding: 2% 0;
+    background: #1B1A1A;
+    bottom: 0;
+    text-align: center;
+    margin-top: 60%;
+}
+
+#descricao-rodape {
+    width: 90%;
+    margin: 0 auto;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+#titulo-rodape {
+    font-weight: bold;
+}
+
+#assinatura-rodape {
+    width: 90%;
+    margin: 10px auto;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    text-align: center;
+    color: #EBE3E3;
+}
+
+#autor {
+    margin-right: 10px;
+}
+
+#redes-sociais {
+    width: 90%;
+    margin: 10px auto;
+    text-align: center;
+}
+
+#instagram, #linkedin {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    color: #FFFFFF;
+    text-align: center;
+    display: inline-block; /* Adicione esta linha */
+    margin: 5px; /* Adicione este espaço entre os parágrafos */
+}
+
+#logo-instagram, #logo-linkedin {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.hidden {
+    display: none;
+}
+
+#container-perguntas {
+    position: absolute;
+    font-family: 'Inter';
+    width: 90%;
+    height: auto;
+    left: 50%;
+    transform: translateX(-50%); 
+    top: 9em;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(2px);
+    border-radius: 71px;
+}
+
+#container-perguntas h3 {
+    padding-left: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Inter';
+
+}
+
+.accordion {
+    background-color: rgba(255, 255, 255, 0);
+    position: relative;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Inter';
+    font-weight: 600;
+    padding: 15px;
+    width: 85%;
+    left: 50%; 
+    transform: translateX(-50%);
+    border: none;
+    text-align: left;
+    outline: none;
+    transition: 0.4s;
+}
+
+.panel {
+    padding-left: 115px;
+    padding-bottom: 10px;
+    width: 90%;
+    display: none;
+    overflow: hidden;
+}
+
+.faq-highlight {
+    font-style: italic;
+    font-weight: bold;
+}
+
+@media (min-width: 769px) and (max-width: 1421px) {
+    #container-sugestoes {
+        max-height: 78vh;
+        overflow: auto;
+        left: 5%;
+        top: 110%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    #cabecalho {
+        height: 9vh;
+    }
+
+    #titulo-cabecalho {
+        font-size: 15px; 
+        line-height: 45px;
+    }
+
+    #logo-pokebola {
+        width: 45px; 
+        height: 45px;
+    }
+
+    .slot {
+        width: calc(50% - 3.33%);
+    }
+
+    .container-barra-pesquisa {
+        width: calc(50% - 3.33%);
+        margin: 0.5%;
+    }
+
+    #container-slots {
+        top: 8em;
+    }
+
+    .conjunto-slots {
+        padding: 1%; 
+    }
+
+    #container-sugestoes {
+        position: fixed;
+        width: 90%;
+        max-height: 60vh;
+        overflow: auto;
+        left: 5%;
+        bottom: 20px; 
+        background: rgba(255, 255, 255, 0.66);
+        backdrop-filter: blur(2px);
+        border-radius: 71px;
+        margin: 4% 0;
+    }
+    
+    body {
+        padding-bottom: 60vh; 
+    }
+
+    #rodape {
+        position: fixed;
+        width: 100%;
+        height: auto;
+        padding: 2% 0;
+        background: #1B1A1A;
+        text-align: center;
+        bottom: 0;
+    }
+
+    #descricao-rodape {
+        font-size: 12px; 
+        line-height: 14px;
+    }
+
+    #titulo-rodape {
+        font-size: 14px; 
+    }
+
+    #assinatura-rodape {
+        font-size: 12px; 
+        line-height: 14px;
+    }
+
+    #instagram, #linkedin {
+        font-size: 12px; 
+        line-height: 14px;
+    }
+
+    #logo-instagram, #logo-linkedin {
+        width: 10px;
+        height: 10px;
+        vertical-align: middle;
+    }
+
+    #container-perguntas {
+        top: 6em;
+        max-height: 60vh;
+        overflow: auto;
+        font-size: 12px;
+    }
+
+    #container-perguntas h3 {
+        font-size: 14px;
+    }
+    #container-perguntas button {
+        font-size: 12px;
+    }
+}
