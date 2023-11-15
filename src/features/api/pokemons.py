@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from .service import find_suggestions_by_team, get_all_sprites
+from service import find_suggestions_by_team, get_all_sprites
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -23,5 +23,5 @@ def fetch_sprites():
     return jsonify(sprites)
 
 
-if __name__ == '__main__':
-    app.run()
+#if __name__ == '__main__':
+#    app.run()

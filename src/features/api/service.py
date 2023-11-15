@@ -1,5 +1,5 @@
 import pandas as pd
-from .data_access import get_sprites_df, get_rules_df, get_teams_df, get_pokedex_df
+from data_access import get_sprites_df, get_rules_df, get_teams_df, get_pokedex_df
 
 
 __all__ = [
@@ -26,12 +26,12 @@ def _get_unique_pokemons() -> list:
 
 
 def _is_pokemon_weak_against(pokemon: pd.core.series.Series, against_type_column: str) -> bool:
-    
+
     return pokemon[against_type_column] >= 2.0
 
 
 def _is_pokemon_strong_against(pokemon: pd.core.series.Series, against_type_column: str) -> bool:
-    
+
     return pokemon[against_type_column] <= 0.5
 
 
@@ -48,9 +48,9 @@ def _format_suggestions(suggestions_df: pd.DataFrame, sprites_df: pd.DataFrame) 
 
 
 def _get_team_weakness_columns(against_type_columns: list, df: pd.DataFrame, team: list) -> set:
-    
+
     team_effectiveness = {
-        'strengths': set(), 
+        'strengths': set(),
         'weaknesses': set()
     }
     for pokemon_name in team:
@@ -61,7 +61,7 @@ def _get_team_weakness_columns(against_type_columns: list, df: pd.DataFrame, tea
             elif _is_pokemon_strong_against(pokemon, against_type_column).any():
                 team_effectiveness['strengths'].add(against_type_column)
     team_weakness_columns = team_effectiveness['weaknesses'] - team_effectiveness['strengths']
-    return team_weakness_columns 
+    return team_weakness_columns
 
 
 def _get_team_weaknesses(team_weakness_columns) -> list:
@@ -71,7 +71,7 @@ def _get_team_weaknesses(team_weakness_columns) -> list:
 
 
 def _filter_suggestions(team: list, rules_df: pd.DataFrame) -> pd.DataFrame:
-    
+
     suggestions_df = rules_df[rules_df['antecedents'].apply(lambda pokemon: pokemon.issubset(frozenset(team)))].copy()
     suggestions_df = suggestions_df[~suggestions_df['consequents'].isin(suggestions_df['antecedents'])]
     suggestions_df = suggestions_df[suggestions_df['consequent_len'] == 1]
@@ -80,9 +80,9 @@ def _filter_suggestions(team: list, rules_df: pd.DataFrame) -> pd.DataFrame:
 
 
 def _fill_choice_advantage_column(team_weakness_columns: set, pokedex: pd.DataFrame, suggestions_df: pd.DataFrame) -> pd.DataFrame:
-    
+
     suggestions_df['choice_advantage'] = ''
-    for suggestion in suggestions_df['consequents']:    
+    for suggestion in suggestions_df['consequents']:
         name = list(suggestion)[0]
         pokemon = pokedex[pokedex['name'] == name]
         choice_advantage = ''
@@ -94,7 +94,7 @@ def _fill_choice_advantage_column(team_weakness_columns: set, pokedex: pd.DataFr
 
 
 def _group_suggestions(suggestions_df: pd.DataFrame) -> pd.DataFrame:
-    
+
     suggestions_df = suggestions_df.groupby('Pokémon').agg({
         'Sprite': lambda x: x.unique()[0],
         '1º tipo': lambda x: x.unique()[0],
@@ -110,9 +110,9 @@ def _group_suggestions(suggestions_df: pd.DataFrame) -> pd.DataFrame:
 def find_suggestions_by_team(team: list) -> object:
 
     team = [pokemon.title() for pokemon in team]
-    interest_columns = ['name', 'against_bug', 'against_dark', 'against_dragon', 'against_electric', 'against_fairy', 
-                        'against_fighting', 'against_fire', 'against_flying', 'against_ghost', 'against_grass', 
-                        'against_ground', 'against_ice', 'against_normal', 'against_poison', 'against_psychic', 
+    interest_columns = ['name', 'against_bug', 'against_dark', 'against_dragon', 'against_electric', 'against_fairy',
+                        'against_fighting', 'against_fire', 'against_flying', 'against_ghost', 'against_grass',
+                        'against_ground', 'against_ice', 'against_normal', 'against_poison', 'against_psychic',
                         'against_rock', 'against_steel', 'against_water']
     pokedex = get_pokedex_df(interest_columns)
     against_type_columns = interest_columns[1:]
@@ -120,7 +120,7 @@ def find_suggestions_by_team(team: list) -> object:
     team_weaknesses = _get_team_weaknesses(team_weakness_columns)
     rules_df = get_rules_df()
     sprites_df = get_sprites_df()
-    
+
     if _is_team_complete(team):
         return {
             'Resultado': 'Equipe completa!',
