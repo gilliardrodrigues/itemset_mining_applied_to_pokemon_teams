@@ -288,6 +288,9 @@
                             <br>
                             Lift: <br>${formatMetricValue(suggestion.Lift)}
                         </span>
+                    </td>
+                    <td>
+                        ${buildChoiceAdvantagesImgsHTML(parseChoiceAdvantage(suggestion["É um reforço contra"][0]))}
                     </td>`;
 
                     if (!data[data.length - 1].hasOwnProperty("Confiança")) {
@@ -420,6 +423,9 @@
                         <br>
                         Lift: <br>${formatMetricValue(suggestion.Lift)}
                     </span>
+                </td>
+                <td>
+                    ${buildChoiceAdvantagesImgsHTML(parseChoiceAdvantage(suggestion["É um reforço contra"][0]))}
                 </td>`;
             });
         }
@@ -475,6 +481,22 @@
 
         function formatMetricValue(data) {
             return data.map(item => item.toString().replace(',', ', ')).join(', ');
+        }
+        function parseChoiceAdvantage(choiceAdvantagesText) {
+            return choiceAdvantagesText.split(', ');
+        }
+        function buildChoiceAdvantagesImgsHTML(choiceAdvantagesList) {
+            let html = '';
+            if (hasChoiceAdvantages(choiceAdvantagesList)) {
+                choiceAdvantagesList.forEach(type => html += `<img class='choiceAdvantages' src='https://play.pokemonshowdown.com/sprites/types/${capitalizeFirstLetter(type)}.png' alt='${capitalizeFirstLetter(type)}'>`);
+            }
+            return html;
+        }
+        function hasChoiceAdvantages(choiceAdvantagesList) {
+            return choiceAdvantagesList[0] !== '';
+        }
+        function capitalizeFirstLetter(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
         }
     </script>
 </body>

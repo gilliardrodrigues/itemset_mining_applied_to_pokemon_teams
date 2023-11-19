@@ -100,6 +100,11 @@ body {
     margin: 0 3%;
 }
 
+.choiceAdvantages {
+    display: flex;
+    margin: 0 auto;
+}
+
 .nomePokemonSlot {
     font-family: 'Pokemon Solid';
     font-style: normal;
