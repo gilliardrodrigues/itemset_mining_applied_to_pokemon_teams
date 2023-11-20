@@ -481,9 +481,10 @@ thead th {
     }
 
     #container-sugestoes {
-        position: fixed;
+        position: relative;
+        top: 125px;
         width: 90%;
-        max-height: 60vh;
+        max-height: 75vh;
         overflow: auto;
         left: 5%;
         bottom: 20px; 
