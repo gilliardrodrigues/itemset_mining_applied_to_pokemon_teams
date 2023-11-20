@@ -438,15 +438,6 @@ thead th {
     font-weight: bold;
 }
 
-@media (min-width: 769px) and (max-width: 1421px) {
-    #container-sugestoes {
-        max-height: 78vh;
-        overflow: auto;
-        left: 5%;
-        top: 110%;
-    }
-}
-
 @media (max-width: 768px) {
 
     #cabecalho {
