@@ -36,7 +36,7 @@
             <div class="conjunto-barras">
                 <div class="container-barra-pesquisa">
                     <img class="lupa" src="/static/img/lupa.png">
-                    <input type="text" id="barra-1" class="barra-pesquisa" placeholder="Insira sua escolha." name="firstPokemon">
+                    <input type="text" id="barra-1" class="barra-pesquisa" placeholder="Insira sua escolha..." name="firstPokemon">
                 </div>
                 <div class="container-barra-pesquisa">
                     <img class="lupa" src="/static/img/lupa.png">
@@ -236,8 +236,8 @@
                 const confA = Array.isArray(a.Confiança) ? a.Confiança : [a.Confiança];
                 const confB = Array.isArray(b.Confiança) ? b.Confiança : [b.Confiança];
                 // Calcular a média das porcentagens ou usar o valor único, dependendo do caso
-                const maxA = Math.max(.confA);
-                const maxB = Math.max(.confB);
+                const maxA = Math.max(...confA);
+                const maxB = Math.max(...confB);
                 // Comparar os valores máximos para ordenar em ordem decrescente
                 return maxB - maxA;
             });
