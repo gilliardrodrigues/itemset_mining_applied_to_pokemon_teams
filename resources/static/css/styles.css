@@ -484,7 +484,31 @@ thead th {
         border-radius: 71px;
         margin: 4% 0;
     }
+
+    caption {
+        font-size: 12px;
+    }
+
+    table {
+        font-size: 5px;
+    }
+
+    th {
+        font-size: 4px;
+    }
+
+    img.sprite {
+        width: 30px;
+    }
+
+    img.type {
+        width: 13px;
+    }
     
+    img.choiceAdvantages {
+        width: 13px;
+    }
+
     body {
         padding-bottom: 60vh; 
     }
