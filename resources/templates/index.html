@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Gill's Team Builder</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/styles.css" />
-    <link rel="icon" href="../static/img/pokebola.png">
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
+    <link rel="icon" href="/static/img/pokebola.png">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.min.js"></script>
 
@@ -16,7 +16,7 @@
 <body>
     <header>
         <div id="cabecalho">
-            <img id="logo-pokebola" src="../static/img/pokebola.png">
+            <img id="logo-pokebola" src="/static/img/pokebola.png">
             <h2 id="titulo-cabecalho"><a href="index.html">Gill's Team Builder</a></h2>
             <ul>
                 <li><a href="faq.html">FAQ</a></li>
@@ -26,36 +26,36 @@
     <section>
         <div id="container-slots">
             <div class="conjunto-slots">
-                <img class="slot" id="slot-1" src="../static/img/slot.png">
-                <img class="slot" id="slot-2" src="../static/img/slot.png">
-                <img class="slot" id="slot-3" src="../static/img/slot.png">
-                <img class="slot" id="slot-4" src="../static/img/slot.png">
-                <img class="slot" id="slot-5" src="../static/img/slot.png">
-                <img class="slot" id="slot-6" src="../static/img/slot.png">
+                <img class="slot" id="slot-1" src="/static/img/slot.png">
+                <img class="slot" id="slot-2" src="/static/img/slot.png">
+                <img class="slot" id="slot-3" src="/static/img/slot.png">
+                <img class="slot" id="slot-4" src="/static/img/slot.png">
+                <img class="slot" id="slot-5" src="/static/img/slot.png">
+                <img class="slot" id="slot-6" src="/static/img/slot.png">
             </div>
             <div class="conjunto-barras">
                 <div class="container-barra-pesquisa">
-                    <img class="lupa" src="../static/img/lupa.png">
-                    <input type="text" id="barra-1" class="barra-pesquisa" placeholder="Insira sua escolha..." name="firstPokemon">
+                    <img class="lupa" src="/static/img/lupa.png">
+                    <input type="text" id="barra-1" class="barra-pesquisa" placeholder="Insira sua escolha." name="firstPokemon">
                 </div>
                 <div class="container-barra-pesquisa">
-                    <img class="lupa" src="../static/img/lupa.png">
+                    <img class="lupa" src="/static/img/lupa.png">
                     <input type="text" id="barra-2" class="barra-pesquisa" name="secondPokemon" readonly>
                 </div>
                 <div class="container-barra-pesquisa">
-                    <img class="lupa" src="../static/img/lupa.png">
+                    <img class="lupa" src="/static/img/lupa.png">
                     <input type="text" id="barra-3" class="barra-pesquisa" name="thirdPokemon" readonly>
                 </div>
                 <div class="container-barra-pesquisa">
-                    <img class="lupa" src="../static/img/lupa.png">
+                    <img class="lupa" src="/static/img/lupa.png">
                     <input type="text" id="barra-4" class="barra-pesquisa" name="fourthPokemon" readonly>
                 </div>
                 <div class="container-barra-pesquisa">
-                    <img class="lupa" src="../static/img/lupa.png">
+                    <img class="lupa" src="/static/img/lupa.png">
                     <input type="text" id="barra-5" class="barra-pesquisa" name="fifthPokemon" readonly>
                 </div>
                 <div class="container-barra-pesquisa">
-                    <img class="lupa" src="../static/img/lupa.png">
+                    <img class="lupa" src="/static/img/lupa.png">
                     <input type="text" id="barra-6" class="barra-pesquisa" name="sixthPokemon" readonly>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                 <table>
                     <thead>
                         <caption>Pokémons frequentemente utilizados na mesma equipe:
-                            <img id="clear-button" src="../static/img/refresh.png" alt="Limpar">
+                            <img id="clear-button" src="/static/img/refresh.png" alt="Limpar">
                         </caption>
                         <tr>
                             <th class="coluna" id="coluna-1">Pokémon</th>
@@ -94,10 +94,10 @@
                 <span id="autor">Gilliard Rodrigues</span> | 2023
             </p>
             <div id="redes-sociais">
-                <img id="logo-instagram" src="../static/img/logo_instagram.png">
+                <img id="logo-instagram" src="/static/img/logo_instagram.png">
                 <p id="instagram">@gillrodrigues_</p>
                 <br>
-                <img id="logo-linkedin" src="../static/img/logo_linkedin.png">
+                <img id="logo-linkedin" src="/static/img/logo_linkedin.png">
                 <p id="linkedin">gilliard-rodrigues</p>
             </div>
         </div>
@@ -201,7 +201,7 @@
             const currentInputIndex = Array.from(inputs).indexOf(currentInput);
             const nextInput = inputs[currentInputIndex + 1];
             nextInput.removeAttribute('readonly');
-            nextInput.placeholder = 'Insira sua escolha...';
+            nextInput.placeholder = 'Insira sua escolha.';
             nextInput.focus();
         }
 
@@ -236,8 +236,8 @@
                 const confA = Array.isArray(a.Confiança) ? a.Confiança : [a.Confiança];
                 const confB = Array.isArray(b.Confiança) ? b.Confiança : [b.Confiança];
                 // Calcular a média das porcentagens ou usar o valor único, dependendo do caso
-                const maxA = Math.max(...confA);
-                const maxB = Math.max(...confB);
+                const maxA = Math.max(.confA);
+                const maxB = Math.max(.confB);
                 // Comparar os valores máximos para ordenar em ordem decrescente
                 return maxB - maxA;
             });
@@ -392,7 +392,7 @@
         }
 
         function handleInputChange(event) {
-            
+
             const currentInput = event.target;
             const inputValue = currentInput.value.trim();
             if (inputValue !== '') {
@@ -479,7 +479,7 @@
                 const slotElement = document.createElement('img');
                 slotElement.classList.add('slot');
                 slotElement.id = `slot-${index + 1}`;
-                slotElement.src = '../static/img/slot.png';
+                slotElement.src = '/static/img/slot.png';
                 slot.replaceWith(slotElement);
             });
 
