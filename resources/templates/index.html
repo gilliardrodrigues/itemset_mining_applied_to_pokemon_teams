@@ -471,7 +471,7 @@
             const slots = document.querySelectorAll('.conteudo-slot');
             const barrasPesquisa = document.querySelectorAll('.barra-pesquisa');
             const lupas = document.querySelectorAll('.lupa');
-
+            const weaknessesContainer = document.getElementById('team-weaknesses');
             // Restaurar os slots para o estado inicial
             slots.forEach((slot, index) => {
                 const slotElement = document.createElement('img');
@@ -496,6 +496,8 @@
 
             // Restaurar o estilo da seção
             document.querySelector('.conjunto-barras').style.padding = '0% 2% 2%;';
+            weaknessesContainer.style.display = 'none';
+            
         }
 
         function formatAntecedents(data) {
