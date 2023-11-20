@@ -187,7 +187,7 @@
         });
 
         async function fetchSprites() {
-            const response = await fetch('http://127.0.0.1:5000/sprites', {
+            const response = await fetch('https://gilliardrodrigues.pythonanywhere.com/sprites', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json, charset=utf-8',
@@ -219,7 +219,7 @@
         }
 
         async function makeRequest(pokemonList, teamWeaknesses, event) {
-            const response = await fetch('http://127.0.0.1:5000/suggestions', {
+            const response = await fetch('https://gilliardrodrigues.pythonanywhere.com/suggestions', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8',
