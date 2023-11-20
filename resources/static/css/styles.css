@@ -528,6 +528,10 @@ thead th {
         height: 15px;
     }
 
+    .tooltip .tooltip-text {
+        left: 110px;
+    }
+
     body {
         padding-bottom: 60vh; 
     }
