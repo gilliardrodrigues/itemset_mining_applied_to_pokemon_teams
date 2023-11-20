@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
 
 /* Estilização geral: */
 * {
@@ -483,6 +484,14 @@ thead th {
         backdrop-filter: blur(2px);
         border-radius: 71px;
         margin: 4% 0;
+    }
+
+    #team-weaknesses h3 {
+        font-size: 12px;
+    }
+
+    #team-weaknesses img {
+        width: 13px;
     }
 
     caption {
