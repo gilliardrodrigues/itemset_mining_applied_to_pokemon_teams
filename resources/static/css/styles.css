@@ -486,8 +486,12 @@ thead th {
         margin: 4% 0;
     }
 
+    #inner-container-sugestoes {
+        -webkit-overflow-scrolling: touch;
+    }
+
     #team-weaknesses h3 {
-        font-size: 12px;
+        font-size: 10px;
     }
 
     #team-weaknesses img {
