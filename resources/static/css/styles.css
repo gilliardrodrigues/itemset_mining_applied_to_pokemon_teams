@@ -523,6 +523,10 @@ thead th {
         width: 13px;
     }
 
+    #clear-button {
+        width: 15px;
+    }
+
     body {
         padding-bottom: 60vh; 
     }
