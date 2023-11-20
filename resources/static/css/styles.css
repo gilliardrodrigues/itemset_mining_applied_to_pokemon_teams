@@ -105,6 +105,21 @@ body {
     margin: 0 auto;
 }
 
+#team-weaknesses {
+    padding-left: 70px;
+    padding-bottom: 10px;
+}
+
+#team-weaknesses h3 {
+    font-family: 'Pokemon Solid';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px; 
+    padding-right: 10px;
+    margin-top: -15px;
+    float: left;
+}
+
 .nomePokemonSlot {
     font-family: 'Pokemon Solid';
     font-style: normal;

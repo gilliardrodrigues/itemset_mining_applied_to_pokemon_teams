@@ -305,6 +305,29 @@
 
             // Armazenar os resultados no sessionStorage
             sessionStorage.setItem('suggestions', JSON.stringify(suggestions));
+            
+            let weaknessesContainer = document.getElementById('team-weaknesses');
+            if (!weaknessesContainer) {
+                weaknessesContainer = document.createElement('div');
+                weaknessesContainer.id = 'team-weaknesses';
+                const containerSlots = document.getElementById('container-slots');
+                containerSlots.appendChild(weaknessesContainer);
+            }
+
+            weaknessesContainer.innerHTML = ''; // Limpar o conteúdo anterior
+            if (teamWeaknesses.length) {
+                const weaknessesTitle = document.createElement('h3');
+                weaknessesTitle.textContent = 'Fraquezas da equipe:';
+                weaknessesContainer.appendChild(weaknessesTitle);
+
+                teamWeaknesses.forEach(weakness => {
+                    const typeImg = document.createElement('img');
+                    typeImg.src = `https://play.pokemonshowdown.com/sprites/types/${capitalizeFirstLetter(weakness)}.png`;
+                    typeImg.style.marginTop = '5px';
+                    typeImg.style.marginRight = '5px';
+                    weaknessesContainer.appendChild(typeImg);
+                });
+            }
         }
 
         function fillSlot(currentInput, pokemon) {
