@@ -59,7 +59,7 @@
                     <input type="text" id="barra-6" class="barra-pesquisa" name="sixthPokemon" readonly>
                 </div>
             </div>
-            
+
         </div>
         <div id="container-sugestoes">
             <div id="inner-container-sugestoes">
@@ -102,7 +102,7 @@
             </div>
         </div>
     </footer>
-    
+
     <script>
         const inputs = document.querySelectorAll('.barra-pesquisa');
         const suggestionsTable = document.querySelector('tbody');
@@ -175,7 +175,7 @@
         // Carregar os resultados armazenados no sessionStorage ao recarregar a página
         window.addEventListener('DOMContentLoaded', loadResultsFromSessionStorage);
         window.addEventListener('DOMContentLoaded', fetchSprites());
-
+        document.addEventListener("touchstart", function() {}, true);
         document.querySelector('#clear-button').addEventListener('click', function () {
             // Limpar o sessionStorage
             sessionStorage.clear();
@@ -229,7 +229,7 @@
 
             const data = await response.json();
             const suggestions = Array.isArray(data) ? data : [data];
-            
+
             // Ordenando as sugestões pela confiança em ordem decrescente, pegando o valor máximo de cada linha:
             suggestions.sort(function(a, b) {
                 // Verificar se 'Confiança' é um array ou um valor único
@@ -306,7 +306,7 @@
 
             // Armazenar os resultados no sessionStorage
             sessionStorage.setItem('suggestions', JSON.stringify(suggestions));
-            
+
             let weaknessesContainer = document.getElementById('team-weaknesses');
             if (!weaknessesContainer) {
                 weaknessesContainer = document.createElement('div');
@@ -499,7 +499,7 @@
             // Restaurar o estilo da seção
             document.querySelector('.conjunto-barras').style.padding = '0% 2% 2%;';
             weaknessesContainer.style.display = 'none';
-            
+
         }
 
         function formatAntecedents(data) {

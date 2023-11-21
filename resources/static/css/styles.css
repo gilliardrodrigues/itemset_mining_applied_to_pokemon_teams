@@ -311,7 +311,7 @@ thead th {
     border-color: #555 transparent transparent transparent;
 }
 
-.tooltip:hover .tooltip-text, .tooltip:active .tooltip-text {
+.tooltip:hover .tooltip-text, .tooltip:focus .tooltip-text, .tooltip:active .tooltip-text {
     visibility: visible;
     opacity: 1;
 }
