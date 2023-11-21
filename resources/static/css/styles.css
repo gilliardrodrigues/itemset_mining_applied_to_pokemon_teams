@@ -34,13 +34,13 @@
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
-    line-height: 70px; 
+    line-height: 70px;
     color: #FFFFFF;
 }
 
 ul {
-    list-style-type: none; 
-    position: absolute; 
+    list-style-type: none;
+    position: absolute;
     margin: 1rem 3%;
     right: 0;
 }
@@ -52,9 +52,9 @@ a {
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
-    line-height: 70px; 
+    line-height: 70px;
 }
-  
+
 
 /* Estilização do container: */
 body {
@@ -82,13 +82,13 @@ body {
     display: flex;
     justify-content: space-between; /* Distribui os slots igualmente */
     align-items: center; /* Alinha os elementos verticalmente */
-    padding: 2%; 
+    padding: 2%;
     flex-wrap: wrap;
 }
 
 .slot {
     width: calc(30% - 3.33%);
-    max-width: 175px; 
+    max-width: 175px;
 }
 
 .conteudo-slot {
@@ -115,7 +115,7 @@ body {
     font-family: 'Pokemon Solid';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px; 
+    font-size: 16px;
     padding-right: 10px;
     margin-top: -15px;
     float: left;
@@ -138,7 +138,7 @@ body {
     display: flex;
     justify-content: space-between; /* Distribui os slots igualmente */
     align-items: center; /* Alinha os elementos verticalmente */
-    padding: 0% 2% 2%; 
+    padding: 0% 2% 2%;
     flex-wrap: wrap;
 }
 
@@ -282,7 +282,7 @@ thead th {
     position: relative;
     display: table-cell;
 }
-  
+
 .tooltip .tooltip-text {
     visibility: hidden;
     background-color: #555;
@@ -299,7 +299,7 @@ thead th {
     opacity: 0;
     transition: opacity 0.3s;
 }
-  
+
 .tooltip .tooltip-text::after {
     content: "";
     position: absolute;
@@ -310,7 +310,7 @@ thead th {
     border-style: solid;
     border-color: #555 transparent transparent transparent;
 }
-  
+
 .tooltip:hover .tooltip-text, .tooltip:active .tooltip-text {
     visibility: visible;
     opacity: 1;
@@ -394,7 +394,7 @@ thead th {
     width: 90%;
     height: auto;
     left: 50%;
-    transform: translateX(-50%); 
+    transform: translateX(-50%);
     top: 9em;
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(2px);
@@ -418,7 +418,7 @@ thead th {
     font-weight: 600;
     padding: 15px;
     width: 85%;
-    left: 50%; 
+    left: 50%;
     transform: translateX(-50%);
     border: none;
     text-align: left;
@@ -446,12 +446,12 @@ thead th {
     }
 
     #titulo-cabecalho {
-        font-size: 15px; 
+        font-size: 15px;
         line-height: 45px;
     }
 
     #logo-pokebola {
-        width: 45px; 
+        width: 45px;
         height: 45px;
     }
 
@@ -469,7 +469,7 @@ thead th {
     }
 
     .conjunto-slots {
-        padding: 1%; 
+        padding: 1%;
     }
 
     #container-sugestoes {
@@ -479,7 +479,7 @@ thead th {
         max-height: 75vh;
         overflow: auto;
         left: 5%;
-        bottom: 20px; 
+        bottom: 20px;
         background: rgba(255, 255, 255, 0.66);
         backdrop-filter: blur(2px);
         border-radius: 71px;
@@ -488,6 +488,14 @@ thead th {
 
     #inner-container-sugestoes {
         -webkit-overflow-scrolling: touch;
+    }
+
+    .autocomplete-suggestions {
+        display: none;
+    }
+
+    .autocomplete-suggestion {
+        display: none;
     }
 
     #team-weaknesses h3 {
@@ -518,7 +526,7 @@ thead th {
     img.type {
         width: 13px;
     }
-    
+
     img.choiceAdvantages {
         width: 13px;
     }
@@ -529,11 +537,11 @@ thead th {
     }
 
     .tooltip .tooltip-text {
-        left: 110px;
+        left: -110px;
     }
 
     body {
-        padding-bottom: 60vh; 
+        padding-bottom: 60vh;
     }
 
     #rodape {
@@ -547,21 +555,21 @@ thead th {
     }
 
     #descricao-rodape {
-        font-size: 12px; 
+        font-size: 12px;
         line-height: 14px;
     }
 
     #titulo-rodape {
-        font-size: 14px; 
+        font-size: 14px;
     }
 
     #assinatura-rodape {
-        font-size: 12px; 
+        font-size: 12px;
         line-height: 14px;
     }
 
     #instagram, #linkedin {
-        font-size: 12px; 
+        font-size: 12px;
         line-height: 14px;
     }
 
