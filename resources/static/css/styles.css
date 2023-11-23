@@ -133,7 +133,7 @@ body {
     display: flex;
     justify-content: space-between; /* Distribui os slots igualmente */
     align-items: center; /* Alinha os elementos verticalmente */
-    padding: 0% 2% 2%;
+    padding: 0% 1.5% 2%;
     flex-wrap: wrap;
 }
 
@@ -210,7 +210,7 @@ body {
     width: 90%;
     height: 634px;
     left: 66px;
-    top: 481px;
+    top: 70%;
 
     background: rgba(255, 255, 255, 0.66);
     backdrop-filter: blur(2px);
@@ -268,9 +268,9 @@ caption {
     margin-bottom: 30px;
     margin-left: 20px;
     text-align: left;
-    position: sticky; 
-    top: 0; 
-    z-index: 2; 
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
 
 thead th {
@@ -373,7 +373,7 @@ thead th {
     line-height: 20px;
     color: #FFFFFF;
     text-align: center;
-    display: inline-block; 
+    display: inline-block;
     margin: 5px;
 }
 

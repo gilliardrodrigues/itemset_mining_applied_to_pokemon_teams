@@ -97,6 +97,23 @@ async function fetchSprites() {
     sprites = await response.json();
 }
 
+async function fetchWeaknesses(pokemonList, teamWeaknesses) {
+    const response = await fetch('https://gilliardrodrigues.pythonanywhere.com/weaknesses', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+        },
+        body: JSON.stringify({ team: pokemonList }),
+
+    });
+
+    const data = await response.json();
+
+    teamWeaknesses.splice(0, teamWeaknesses.length);
+    teamWeaknesses.push(...data[0]['Fraquezas'] || []);
+    updateWeaknessesContainer(teamWeaknesses);
+}
+
 // Função para habilitar o próximo input:
 function enableNextInput(currentInput) {
     const currentInputIndex = Array.from(inputs).indexOf(currentInput);
@@ -133,14 +150,11 @@ async function makeRequest(pokemonList, teamWeaknesses, event) {
     const data = await response.json();
     const suggestions = Array.isArray(data) ? data : [data];
 
-    // Ordenando as sugestões pela confiança em ordem decrescente, pegando o valor máximo de cada linha:
-    suggestions.sort(function(a, b) {
-        const confA = Array.isArray(a.Confiança) ? a.Confiança : [a.Confiança];
-        const confB = Array.isArray(b.Confiança) ? b.Confiança : [b.Confiança];
-        const maxA = Math.max(...confA);
-        const maxB = Math.max(...confB);
-        return maxB - maxA;
-    });
+    // Armazenando a lista de fraquezas atuais:
+    if (!suggestions[suggestions.length - 1].hasOwnProperty("Confiança")) {
+        teamWeaknesses.splice(0, teamWeaknesses.length);
+        teamWeaknesses.push(...suggestions.pop()['Fraquezas']);
+    }
 
     const containerSugestoes = document.querySelector('#container-sugestoes');
     containerSugestoes.style.display = 'block';
@@ -153,16 +167,25 @@ async function makeRequest(pokemonList, teamWeaknesses, event) {
     rowsToRemove.forEach((row) => {
         tableBody.removeChild(row);
     });
+
     // Tratando caso em que a API não retorna sugestões:
-    if (suggestions.length === 1 && typeof suggestions[0] === 'string') {
+    if (suggestions.length === 1 && suggestions[0].Resultado) {
         const rowToHidden = tableBody.querySelector('tr:first-child');
         rowToHidden.style.display = 'none';
         const noSuggestionsRow = tableBody.insertRow();
         const noSuggestionsCell = noSuggestionsRow.insertCell();
         noSuggestionsCell.colSpan = 5;
-        noSuggestionsCell.textContent = suggestions[0];
+        noSuggestionsCell.textContent = suggestions[0].Resultado;
     }
     else {
+        // Ordenando as sugestões pela confiança em ordem decrescente, pegando o valor máximo de cada linha:
+        suggestions.sort(function(a, b) {
+            const confA = Array.isArray(a.Confiança) ? a.Confiança : [a.Confiança];
+            const confB = Array.isArray(b.Confiança) ? b.Confiança : [b.Confiança];
+            const maxA = Math.max(...confA);
+            const maxB = Math.max(...confB);
+            return maxB - maxA;
+        });
         suggestions.forEach((suggestion, index) => {
             const row = tableBody.insertRow();
             row.classList.add('linha');
@@ -191,10 +214,6 @@ async function makeRequest(pokemonList, teamWeaknesses, event) {
             <td>
                 ${buildChoiceAdvantagesImgsHTML(parseChoiceAdvantage(suggestion["É um reforço contra"][0]))}
             </td>`;
-            // Armazenando a lista de fraquezas atuais:
-            if (!data[data.length - 1].hasOwnProperty("Confiança")) {
-                teamWeaknesses = data.pop()['Fraquezas']; 
-            }
         });
     }
 
@@ -205,29 +224,7 @@ async function makeRequest(pokemonList, teamWeaknesses, event) {
     // Armazenando os resultados no sessionStorage:
     sessionStorage.setItem('suggestions', JSON.stringify(suggestions));
 
-    // Obtendo ou criando (caso não exista) o container de fraquezas da equipe atual:
-    let weaknessesContainer = document.getElementById('team-weaknesses');
-    if (!weaknessesContainer) {
-        weaknessesContainer = document.createElement('div');
-        weaknessesContainer.id = 'team-weaknesses';
-        const containerSlots = document.getElementById('container-slots');
-        containerSlots.appendChild(weaknessesContainer);
-    }
-
-    weaknessesContainer.innerHTML = '';
-    if (teamWeaknesses.length) {
-        const weaknessesTitle = document.createElement('h3');
-        weaknessesTitle.textContent = 'Fraquezas da equipe:';
-        weaknessesContainer.appendChild(weaknessesTitle);
-
-        teamWeaknesses.forEach(weakness => {
-            const typeImg = document.createElement('img');
-            typeImg.src = `https://play.pokemonshowdown.com/sprites/types/${capitalizeFirstLetter(weakness)}.png`;
-            typeImg.style.marginTop = '5px';
-            typeImg.style.marginRight = '5px';
-            weaknessesContainer.appendChild(typeImg);
-        });
-    }
+    updateWeaknessesContainer(teamWeaknesses);
 }
 
 // Função para preencher o slot após selecionar um pokémon:
@@ -291,6 +288,34 @@ function fillSlot(currentInput, pokemon) {
     }
 }
 
+function updateWeaknessesContainer(teamWeaknesses) {
+    // Obtendo ou criando (caso não exista) o container de fraquezas da equipe atual:
+    let weaknessesContainer = document.getElementById('team-weaknesses');
+    if (!weaknessesContainer) {
+        weaknessesContainer = document.createElement('div');
+        weaknessesContainer.id = 'team-weaknesses';
+        const containerSlots = document.getElementById('container-slots');
+        containerSlots.appendChild(weaknessesContainer);
+    }
+
+    weaknessesContainer.innerHTML = '';
+    if (teamWeaknesses.length) {
+        const weaknessesTitle = document.createElement('h3');
+        weaknessesTitle.textContent = 'Fraquezas da equipe:';
+        weaknessesContainer.appendChild(weaknessesTitle);
+
+        teamWeaknesses.forEach(weakness => {
+            const typeImg = document.createElement('img');
+            typeImg.src = `https://play.pokemonshowdown.com/sprites/types/${capitalizeFirstLetter(weakness)}.png`;
+            typeImg.style.marginTop = '5px';
+            typeImg.style.marginRight = '5px';
+            weaknessesContainer.appendChild(typeImg);
+        });
+        weaknessesContainer.style.display = 'block';
+    }
+
+}
+
 // Função para lidar com a mudança de input:
 function handleInputChange(event) {
 
@@ -306,6 +331,7 @@ function handleInputChange(event) {
         else {
             const pokemon = pokemonList[pokemonList.length - 1];
             fillSlot(currentInput, pokemon);
+            fetchWeaknesses(pokemonList, teamWeaknesses);
             document.querySelector(".conjunto-barras").style.padding = 0;
             hiddenSuggestions();
         }
@@ -324,43 +350,53 @@ function renderResults(results) {
         tableBody.removeChild(row);
     });
 
-    // Ordenando as sugestões pela confiança em ordem decrescente, pegando o valor máximo de cada linha:
-    suggestions.sort(function(a, b) {
-        const confA = Array.isArray(a.Confiança) ? a.Confiança : [a.Confiança];
-        const confB = Array.isArray(b.Confiança) ? b.Confiança : [b.Confiança];
-        const maxA = Math.max(...confA);
-        const maxB = Math.max(...confB);
-        return maxB - maxA;
-    });
-
-    results.forEach((suggestion, index) => {
-        const row = tableBody.insertRow();
-        row.classList.add('linha');
-        row.innerHTML = `
-        <td><img class="sprite" src="${suggestion.Sprite}" alt="${suggestion.Pokémon}"></td>
-        <td>${suggestion.Pokémon}</td>
-        <td><img class="type" src="${suggestion['1º tipo']}" alt="${suggestion.Pokémon}">
-        ${suggestion['2º tipo'] !== '-' ? `<img class="type" src="${suggestion['2º tipo']}" alt="${suggestion.Pokémon}">` : ''}</td>
-        <td class="tooltip">
-            Visualizar
-            <span class="tooltip-text">
-                Freq. utilizado com: <br>${formatAntecedents(suggestion['Freq. utilizado com'])}
-                <br>
-                Confiança (%): <br>${formatMetricValue(suggestion.Confiança)}
-            </span>
-        </td>
-        <td class="tooltip">
-            Visualizar
-            <span class="tooltip-text">
-                Freq. utilizado com: <br>${formatAntecedents(suggestion['Freq. utilizado com'])}
-                <br>
-                Lift: <br>${formatMetricValue(suggestion.Lift)}
-            </span>
-        </td>
-        <td>
-            ${buildChoiceAdvantagesImgsHTML(parseChoiceAdvantage(suggestion["É um reforço contra"][0]))}
-        </td>`;
-    });
+    // Tratando caso em que a API não retorna sugestões:
+    if (results.length === 2 && results[0].Resultado) {
+        const rowToHidden = tableBody.querySelector('tr:first-child');
+        rowToHidden.style.display = 'none';
+        const noSuggestionsRow = tableBody.insertRow();
+        const noSuggestionsCell = noSuggestionsRow.insertCell();
+        noSuggestionsCell.colSpan = 5;
+        noSuggestionsCell.textContent = suggestions[0].Resultado;
+    }
+    else {
+        // Ordenando as sugestões pela confiança em ordem decrescente, pegando o valor máximo de cada linha:
+        results.sort(function(a, b) {
+            const confA = Array.isArray(a.Confiança) ? a.Confiança : [a.Confiança];
+            const confB = Array.isArray(b.Confiança) ? b.Confiança : [b.Confiança];
+            const maxA = Math.max(...confA);
+            const maxB = Math.max(...confB);
+            return maxB - maxA;
+        });
+        results.forEach((suggestion, index) => {
+            const row = tableBody.insertRow();
+            row.classList.add('linha');
+            row.innerHTML = `
+                <td><img class="sprite" src="${suggestion.Sprite}" alt="${suggestion.Pokémon}"></td>
+                <td>${suggestion.Pokémon}</td>
+                <td><img class="type" src="${suggestion['1º tipo']}" alt="${suggestion.Pokémon}">
+                ${suggestion['2º tipo'] !== '-' ? `<img class="type" src="${suggestion['2º tipo']}" alt="${suggestion.Pokémon}">` : ''}</td>
+                <td class="tooltip">
+                    Visualizar
+                    <span class="tooltip-text">
+                        Freq. utilizado com: <br>${formatAntecedents(suggestion['Freq. utilizado com'])}
+                        <br>
+                        Confiança (%): <br>${formatMetricValue(suggestion.Confiança)}
+                    </span>
+                </td>
+                <td class="tooltip">
+                    Visualizar
+                    <span class="tooltip-text">
+                        Freq. utilizado com: <br>${formatAntecedents(suggestion['Freq. utilizado com'])}
+                        <br>
+                        Lift: <br>${formatMetricValue(suggestion.Lift)}
+                    </span>
+                </td>
+                <td>
+                    ${buildChoiceAdvantagesImgsHTML(parseChoiceAdvantage(suggestion["É um reforço contra"][0]))}
+                </td>`;
+        });
+    }
 }
 
 // Função que carrega os resultados salvos no local storage:
@@ -385,7 +421,7 @@ function resetSlots() {
     const barrasPesquisa = document.querySelectorAll('.barra-pesquisa');
     const lupas = document.querySelectorAll('.lupa');
     const weaknessesContainer = document.getElementById('team-weaknesses');
-    
+
     slots.forEach((slot, index) => {
         const slotElement = document.createElement('img');
         slotElement.classList.add('slot');
@@ -408,6 +444,7 @@ function resetSlots() {
 
     document.querySelector('.conjunto-barras').style.padding = '0% 2% 2%;';
     weaknessesContainer.style.display = 'none';
+
 }
 
 // Outras funções utilitárias:
