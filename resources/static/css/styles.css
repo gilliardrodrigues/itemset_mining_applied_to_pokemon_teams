@@ -440,6 +440,25 @@ thead th {
 
 /* Responsividade: */
 
+@media (min-width: 1900px) {
+
+    #container-sugestoes {
+        top: 55%;;
+        height:850px;
+    }
+}
+
+@media (max-width: 1366px) {
+
+    #container-sugestoes {
+        top: 80%;
+        height: 500px;
+    }
+    .barra-pesquisa {
+        width: 10rem;
+    }
+}
+
 @media (max-width: 768px) {
 
     #cabecalho {
