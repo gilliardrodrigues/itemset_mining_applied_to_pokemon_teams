@@ -4,6 +4,7 @@ from data_access import get_sprites_df, get_rules_df, get_teams_df, get_pokedex_
 
 __all__ = [
     'find_suggestions_by_team',
+    'find_team_weaknesses',
     'get_all_sprites'
 ]
 
@@ -106,6 +107,21 @@ def _group_suggestions(suggestions_df: pd.DataFrame) -> pd.DataFrame:
     }).reset_index(names='Pokémon')
     return suggestions_df
 
+def find_team_weaknesses(team: list) -> object:
+    team = [pokemon.title() for pokemon in team]
+    interest_columns = ['name', 'against_bug', 'against_dark', 'against_dragon', 'against_electric', 'against_fairy',
+                        'against_fighting', 'against_fire', 'against_flying', 'against_ghost', 'against_grass',
+                        'against_ground', 'against_ice', 'against_normal', 'against_poison', 'against_psychic',
+                        'against_rock', 'against_steel', 'against_water']
+    pokedex = get_pokedex_df(interest_columns)
+    against_type_columns = interest_columns[1:]
+    team_weakness_columns = _get_team_weakness_columns(against_type_columns, pokedex, team)
+    team_weaknesses = _get_team_weaknesses(team_weakness_columns)
+    return [
+        {
+            'Fraquezas': team_weaknesses
+        }
+    ]
 
 def find_suggestions_by_team(team: list) -> object:
 
@@ -122,10 +138,14 @@ def find_suggestions_by_team(team: list) -> object:
     sprites_df = get_sprites_df()
 
     if _is_team_complete(team):
-        return {
-            'Resultado': 'Equipe completa!',
-            'Fraquezas': team_weaknesses
-        }
+        return [
+            {
+                'Resultado': 'Equipe completa!'
+            },
+            {
+                'Fraquezas': team_weaknesses
+            }
+        ]
     else:
         suggestions = _filter_suggestions(team, rules_df)
         if _has_suggestions(suggestions):
@@ -136,8 +156,14 @@ def find_suggestions_by_team(team: list) -> object:
             suggestions = suggestions.to_dict('records')
             suggestions.append({'Fraquezas': team_weaknesses})
             return suggestions
-        return 'Não temos sugestões para essa equipe :('
-
+        return [
+            {
+                'Resultado': 'Não temos sugestões para essa equipe :('
+            },
+            {
+                'Fraquezas': team_weaknesses
+            }
+        ]
 
 def get_all_sprites() -> dict:
 

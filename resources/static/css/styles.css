@@ -101,11 +101,6 @@ body {
     margin: 0 3%;
 }
 
-.choiceAdvantages {
-    display: flex;
-    margin: 0 auto;
-}
-
 #team-weaknesses {
     padding-left: 70px;
     padding-bottom: 10px;
@@ -138,7 +133,7 @@ body {
     display: flex;
     justify-content: space-between; /* Distribui os slots igualmente */
     align-items: center; /* Alinha os elementos verticalmente */
-    padding: 0% 2% 2%;
+    padding: 0% 1.5% 2%;
     flex-wrap: wrap;
 }
 
@@ -208,12 +203,14 @@ body {
     font-weight: bold;
 }
 
+/* Estilização da tabela: */
+
 #container-sugestoes {
     position: absolute;
     width: 90%;
     height: 634px;
     left: 66px;
-    top: 481px;
+    top: 70%;
 
     background: rgba(255, 255, 255, 0.66);
     backdrop-filter: blur(2px);
@@ -223,8 +220,6 @@ body {
     display: none;
     margin: 2% 0;
 }
-
-/* Estilização da tabela: */
 
 #inner-container-sugestoes {
     height: 100%;
@@ -254,9 +249,13 @@ table {
     float: right;
     margin-right: 25px;
     width: 25px;
-    /* Defina o tamanho desejado para o botão */
     height: 25px;
     cursor: pointer;
+}
+
+.choiceAdvantages {
+    display: flex;
+    margin: 0 auto;
 }
 
 .linha {
@@ -269,9 +268,9 @@ caption {
     margin-bottom: 30px;
     margin-left: 20px;
     text-align: left;
-    position: sticky; /* Adicione esta linha */
-    top: 0; /* Adicione esta linha */
-    z-index: 2; /* Adicione esta linha se necessário para garantir que esteja acima do conteúdo da tabela */
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
 
 thead th {
@@ -374,8 +373,8 @@ thead th {
     line-height: 20px;
     color: #FFFFFF;
     text-align: center;
-    display: inline-block; /* Adicione esta linha */
-    margin: 5px; /* Adicione este espaço entre os parágrafos */
+    display: inline-block;
+    margin: 5px;
 }
 
 #logo-instagram, #logo-linkedin {
@@ -437,6 +436,27 @@ thead th {
 .faq-highlight {
     font-style: italic;
     font-weight: bold;
+}
+
+/* Responsividade: */
+
+@media (min-width: 1900px) {
+
+    #container-sugestoes {
+        top: 55%;;
+        height:850px;
+    }
+}
+
+@media (max-width: 1366px) {
+
+    #container-sugestoes {
+        top: 80%;
+        height: 500px;
+    }
+    .barra-pesquisa {
+        width: 10rem;
+    }
 }
 
 @media (max-width: 768px) {

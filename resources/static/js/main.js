@@ -3,6 +3,8 @@ const suggestionsTable = document.querySelector('tbody');
 let pokemonList = [];
 let sprites = []
 let teamWeaknesses = []
+
+// Adicionando autocomplete às barras de pesquisa:
 document.addEventListener('DOMContentLoaded', function () {
     const inputs = document.querySelectorAll('.barra-pesquisa');
 
@@ -11,9 +13,9 @@ document.addEventListener('DOMContentLoaded', function () {
             minChars: 1,
             source: function (term, suggest) {
                 term = term.toLowerCase();
-                var matches = [];
-                for (var i = 0; i < sprites.length; i++) {
-                    var pokemon = sprites[i]['Pokémon'];
+                let matches = [];
+                for (let i = 0; i < sprites.length; i++) {
+                    const pokemon = sprites[i]['Pokémon'];
                     if (pokemon.toLowerCase().indexOf(term) !== -1) {
                         matches.push(pokemon);
                     }
@@ -22,13 +24,13 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             renderItem: function (item, search) {
                 search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-                var re = new RegExp('(' + search.split(' ').join('|') + ')', 'gi');
+                const re = new RegExp('(' + search.split(' ').join('|') + ')', 'gi');
                 return '<div class="autocomplete-suggestion" data-val="' + item + '">' + item.replace(re, '<strong>$1</strong>') + '</div>';
             },
             onSelect: function (event, term, item) {
-                var nextElement = item.closest('.conjunto-slots').nextElementSibling;
+                const nextElement = item.closest('.conjunto-slots').nextElementSibling;
                 if (nextElement) {
-                    var barraPesquisa = nextElement.querySelector('.barra-pesquisa');
+                    const barraPesquisa = nextElement.querySelector('.barra-pesquisa');
                     if (barraPesquisa && pokemonList.length !== 6) {
                         enableNextInput(barraPesquisa);
                     }
@@ -36,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 $(this).autoComplete('hide');
             },
             onRender: function (container) {
-                var input = this.element;
-                var inputPosition = input.getBoundingClientRect();
+                const input = this.element;
+                const inputPosition = input.getBoundingClientRect();
                 container.style.width = inputPosition.width + 'px';
                 container.style.left = inputPosition.left + 'px';
                 container.style.top = (inputPosition.top + inputPosition.height) + 'px';
@@ -51,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+// Configurando readonly nos inputs que não estiverem em foco e trocando o foco com enter ou tab:
 inputs.forEach((input, index) => {
     if (index > 0) {
         input.setAttribute('readonly', 'readonly');
@@ -66,20 +69,23 @@ inputs.forEach((input, index) => {
     }
 });
 
-// Carregar os resultados armazenados no sessionStorage ao recarregar a página
+// Carregando os resultados armazenados no sessionStorage ao recarregar a página:
 window.addEventListener('DOMContentLoaded', loadResultsFromSessionStorage);
 window.addEventListener('DOMContentLoaded', fetchSprites());
+
+// Adicionando event listener para o tooltip funcionar bem em dispositivos mobile:
 document.addEventListener("touchstart", function() {}, true);
+
+// Configurando botão de reset:
 document.querySelector('#clear-button').addEventListener('click', function () {
-    // Limpar o sessionStorage
     sessionStorage.clear();
-    // Remover o #container-sugestoes da página
     hiddenSuggestions();
     resetInputs();
     resetSlots();
     pokemonList = [];
 });
 
+// Obtendo sprites dos pokémons:
 async function fetchSprites() {
     const response = await fetch('https://gilliardrodrigues.pythonanywhere.com/sprites', {
         method: 'GET',
@@ -91,6 +97,24 @@ async function fetchSprites() {
     sprites = await response.json();
 }
 
+async function fetchWeaknesses(pokemonList, teamWeaknesses) {
+    const response = await fetch('https://gilliardrodrigues.pythonanywhere.com/weaknesses', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+        },
+        body: JSON.stringify({ team: pokemonList }),
+
+    });
+
+    const data = await response.json();
+
+    teamWeaknesses.splice(0, teamWeaknesses.length);
+    teamWeaknesses.push(...data[0]['Fraquezas'] || []);
+    updateWeaknessesContainer(teamWeaknesses);
+}
+
+// Função para habilitar o próximo input:
 function enableNextInput(currentInput) {
     const currentInputIndex = Array.from(inputs).indexOf(currentInput);
     const nextInput = inputs[currentInputIndex + 1];
@@ -99,6 +123,7 @@ function enableNextInput(currentInput) {
     nextInput.focus();
 }
 
+// Função para resetar o estado dos inputs:
 function resetInputs() {
     inputs.forEach((input, index) => {
         if (index === 0) {
@@ -112,6 +137,7 @@ function resetInputs() {
     });
 }
 
+// Função que faz a request ao endpoint de sugestões de pokémon:
 async function makeRequest(pokemonList, teamWeaknesses, event) {
     const response = await fetch('https://gilliardrodrigues.pythonanywhere.com/suggestions', {
         method: 'POST',
@@ -124,42 +150,43 @@ async function makeRequest(pokemonList, teamWeaknesses, event) {
     const data = await response.json();
     const suggestions = Array.isArray(data) ? data : [data];
 
-    // Ordenando as sugestões pela confiança em ordem decrescente, pegando o valor máximo de cada linha:
-    suggestions.sort(function(a, b) {
-        // Verificar se 'Confiança' é um array ou um valor único
-        const confA = Array.isArray(a.Confiança) ? a.Confiança : [a.Confiança];
-        const confB = Array.isArray(b.Confiança) ? b.Confiança : [b.Confiança];
-        // Calcular a média das porcentagens ou usar o valor único, dependendo do caso
-        const maxA = Math.max(...confA);
-        const maxB = Math.max(...confB);
-        // Comparar os valores máximos para ordenar em ordem decrescente
-        return maxB - maxA;
-    });
+    // Armazenando a lista de fraquezas atuais:
+    if (!suggestions[suggestions.length - 1].hasOwnProperty("Confiança")) {
+        teamWeaknesses.splice(0, teamWeaknesses.length);
+        teamWeaknesses.push(...suggestions.pop()['Fraquezas']);
+    }
 
     const containerSugestoes = document.querySelector('#container-sugestoes');
     containerSugestoes.style.display = 'block';
     const tableBody = document.querySelector('tbody');
     const firstRow = tableBody.querySelector('tr:first-child');
     firstRow.style.display = 'table-row';
-    // Selecionar as linhas a partir do segundo <tr>
+    // Selecionando as linhas a partir do segundo <tr>:
     const rowsToRemove = tableBody.querySelectorAll('tr:not(:first-child)');
-
-    // Remover as linhas selecionadas
+    // Removendo as linhas selecionadas:
     rowsToRemove.forEach((row) => {
         tableBody.removeChild(row);
     });
 
-    if (suggestions.length === 1 && typeof suggestions[0] === 'string') {
+    // Tratando caso em que a API não retorna sugestões:
+    if (suggestions.length === 1 && suggestions[0].Resultado) {
         const rowToHidden = tableBody.querySelector('tr:first-child');
         rowToHidden.style.display = 'none';
         const noSuggestionsRow = tableBody.insertRow();
         const noSuggestionsCell = noSuggestionsRow.insertCell();
         noSuggestionsCell.colSpan = 5;
-        noSuggestionsCell.textContent = suggestions[0];
+        noSuggestionsCell.textContent = suggestions[0].Resultado;
     }
     else {
+        // Ordenando as sugestões pela confiança em ordem decrescente, pegando o valor máximo de cada linha:
+        suggestions.sort(function(a, b) {
+            const confA = Array.isArray(a.Confiança) ? a.Confiança : [a.Confiança];
+            const confB = Array.isArray(b.Confiança) ? b.Confiança : [b.Confiança];
+            const maxA = Math.max(...confA);
+            const maxB = Math.max(...confB);
+            return maxB - maxA;
+        });
         suggestions.forEach((suggestion, index) => {
-
             const row = tableBody.insertRow();
             row.classList.add('linha');
             row.innerHTML = `
@@ -187,46 +214,22 @@ async function makeRequest(pokemonList, teamWeaknesses, event) {
             <td>
                 ${buildChoiceAdvantagesImgsHTML(parseChoiceAdvantage(suggestion["É um reforço contra"][0]))}
             </td>`;
-
-            if (!data[data.length - 1].hasOwnProperty("Confiança")) {
-                teamWeaknesses = data.pop()['Fraquezas']; // Armazena a lista de fraquezas atuais .
-            }
         });
     }
+
     const pokemon = pokemonList[pokemonList.length - 1];
     const currentInput = event.target;
-
     fillSlot(currentInput, pokemon);
 
-    // Armazenar os resultados no sessionStorage
+    // Armazenando os resultados no sessionStorage:
     sessionStorage.setItem('suggestions', JSON.stringify(suggestions));
 
-    let weaknessesContainer = document.getElementById('team-weaknesses');
-    if (!weaknessesContainer) {
-        weaknessesContainer = document.createElement('div');
-        weaknessesContainer.id = 'team-weaknesses';
-        const containerSlots = document.getElementById('container-slots');
-        containerSlots.appendChild(weaknessesContainer);
-    }
-
-    weaknessesContainer.innerHTML = ''; // Limpar o conteúdo anterior
-    if (teamWeaknesses.length) {
-        const weaknessesTitle = document.createElement('h3');
-        weaknessesTitle.textContent = 'Fraquezas da equipe:';
-        weaknessesContainer.appendChild(weaknessesTitle);
-
-        teamWeaknesses.forEach(weakness => {
-            const typeImg = document.createElement('img');
-            typeImg.src = `https://play.pokemonshowdown.com/sprites/types/${capitalizeFirstLetter(weakness)}.png`;
-            typeImg.style.marginTop = '5px';
-            typeImg.style.marginRight = '5px';
-            weaknessesContainer.appendChild(typeImg);
-        });
-    }
+    updateWeaknessesContainer(teamWeaknesses);
 }
 
+// Função para preencher o slot após selecionar um pokémon:
 function fillSlot(currentInput, pokemon) {
-    // Encontre o slot relevante com base no ID do input
+    // Encontrando o slot relevante com base no ID do input:
     let slotElement = null;
     switch (currentInput.id) {
         case 'barra-1':
@@ -248,10 +251,10 @@ function fillSlot(currentInput, pokemon) {
             slotElement = document.querySelector('#slot-6');
             break;
     }
-    var spriteUrl = '';
-    var type1 = '';
-    var type2 = '';
-    for (var i = 0; i < sprites.length; i++) {
+    let spriteUrl = '';
+    let type1 = '';
+    let type2 = '';
+    for (let i = 0; i < sprites.length; i++) {
         if (sprites[i]['Pokémon'] === pokemon) {
             spriteUrl = sprites[i].Sprite;
             type1 = sprites[i]['1º tipo'];
@@ -260,9 +263,9 @@ function fillSlot(currentInput, pokemon) {
         }
     }
     if (spriteUrl !== '') {
-        var divElement = document.createElement('div');
+        const divElement = document.createElement('div');
         divElement.classList.add('conteudo-slot');
-        var imgElement = document.createElement('img');
+        const imgElement = document.createElement('img');
         imgElement.src = spriteUrl;
         imgElement.style.width = "115px";
         imgElement.style.height = "115px";
@@ -285,6 +288,35 @@ function fillSlot(currentInput, pokemon) {
     }
 }
 
+function updateWeaknessesContainer(teamWeaknesses) {
+    // Obtendo ou criando (caso não exista) o container de fraquezas da equipe atual:
+    let weaknessesContainer = document.getElementById('team-weaknesses');
+    if (!weaknessesContainer) {
+        weaknessesContainer = document.createElement('div');
+        weaknessesContainer.id = 'team-weaknesses';
+        const containerSlots = document.getElementById('container-slots');
+        containerSlots.appendChild(weaknessesContainer);
+    }
+
+    weaknessesContainer.innerHTML = '';
+    if (teamWeaknesses.length) {
+        const weaknessesTitle = document.createElement('h3');
+        weaknessesTitle.textContent = 'Fraquezas da equipe:';
+        weaknessesContainer.appendChild(weaknessesTitle);
+
+        teamWeaknesses.forEach(weakness => {
+            const typeImg = document.createElement('img');
+            typeImg.src = `https://play.pokemonshowdown.com/sprites/types/${capitalizeFirstLetter(weakness)}.png`;
+            typeImg.style.marginTop = '5px';
+            typeImg.style.marginRight = '5px';
+            weaknessesContainer.appendChild(typeImg);
+        });
+        weaknessesContainer.style.display = 'block';
+    }
+
+}
+
+// Função para lidar com a mudança de input:
 function handleInputChange(event) {
 
     const currentInput = event.target;
@@ -299,56 +331,75 @@ function handleInputChange(event) {
         else {
             const pokemon = pokemonList[pokemonList.length - 1];
             fillSlot(currentInput, pokemon);
+            fetchWeaknesses(pokemonList, teamWeaknesses);
             document.querySelector(".conjunto-barras").style.padding = 0;
             hiddenSuggestions();
         }
     }
 }
 
+// Função que renderiza os resultados da tabela de sugestões:
 function renderResults(results) {
     const tableBody = document.querySelector('tbody');
 
-    // Selecionar as linhas a partir do segundo <tr>
+    // Selecionando as linhas a partir do segundo <tr>:
     const rowsToRemove = tableBody.querySelectorAll('tr:not(:first-child)');
 
-    // Remover as linhas selecionadas
+    // Removendo as linhas selecionadas:
     rowsToRemove.forEach((row) => {
         tableBody.removeChild(row);
     });
 
-    // Ordenar as sugestões pela confiança em ordem decrescente
-    results.sort((a, b) => b.Confiança - a.Confiança);
-
-    results.forEach((suggestion, index) => {
-        const row = tableBody.insertRow();
-        row.classList.add('linha');
-        row.innerHTML = `
-        <td><img class="sprite" src="${suggestion.Sprite}" alt="${suggestion.Pokémon}"></td>
-        <td>${suggestion.Pokémon}</td>
-        <td><img class="type" src="${suggestion['1º tipo']}" alt="${suggestion.Pokémon}">
-        ${suggestion['2º tipo'] !== '-' ? `<img class="type" src="${suggestion['2º tipo']}" alt="${suggestion.Pokémon}">` : ''}</td>
-        <td class="tooltip">
-            Visualizar
-            <span class="tooltip-text">
-                Freq. utilizado com: <br>${formatAntecedents(suggestion['Freq. utilizado com'])}
-                <br>
-                Confiança (%): <br>${formatMetricValue(suggestion.Confiança)}
-            </span>
-        </td>
-        <td class="tooltip">
-            Visualizar
-            <span class="tooltip-text">
-                Freq. utilizado com: <br>${formatAntecedents(suggestion['Freq. utilizado com'])}
-                <br>
-                Lift: <br>${formatMetricValue(suggestion.Lift)}
-            </span>
-        </td>
-        <td>
-            ${buildChoiceAdvantagesImgsHTML(parseChoiceAdvantage(suggestion["É um reforço contra"][0]))}
-        </td>`;
-    });
+    // Tratando caso em que a API não retorna sugestões:
+    if (results.length === 2 && results[0].Resultado) {
+        const rowToHidden = tableBody.querySelector('tr:first-child');
+        rowToHidden.style.display = 'none';
+        const noSuggestionsRow = tableBody.insertRow();
+        const noSuggestionsCell = noSuggestionsRow.insertCell();
+        noSuggestionsCell.colSpan = 5;
+        noSuggestionsCell.textContent = suggestions[0].Resultado;
+    }
+    else {
+        // Ordenando as sugestões pela confiança em ordem decrescente, pegando o valor máximo de cada linha:
+        results.sort(function(a, b) {
+            const confA = Array.isArray(a.Confiança) ? a.Confiança : [a.Confiança];
+            const confB = Array.isArray(b.Confiança) ? b.Confiança : [b.Confiança];
+            const maxA = Math.max(...confA);
+            const maxB = Math.max(...confB);
+            return maxB - maxA;
+        });
+        results.forEach((suggestion, index) => {
+            const row = tableBody.insertRow();
+            row.classList.add('linha');
+            row.innerHTML = `
+                <td><img class="sprite" src="${suggestion.Sprite}" alt="${suggestion.Pokémon}"></td>
+                <td>${suggestion.Pokémon}</td>
+                <td><img class="type" src="${suggestion['1º tipo']}" alt="${suggestion.Pokémon}">
+                ${suggestion['2º tipo'] !== '-' ? `<img class="type" src="${suggestion['2º tipo']}" alt="${suggestion.Pokémon}">` : ''}</td>
+                <td class="tooltip">
+                    Visualizar
+                    <span class="tooltip-text">
+                        Freq. utilizado com: <br>${formatAntecedents(suggestion['Freq. utilizado com'])}
+                        <br>
+                        Confiança (%): <br>${formatMetricValue(suggestion.Confiança)}
+                    </span>
+                </td>
+                <td class="tooltip">
+                    Visualizar
+                    <span class="tooltip-text">
+                        Freq. utilizado com: <br>${formatAntecedents(suggestion['Freq. utilizado com'])}
+                        <br>
+                        Lift: <br>${formatMetricValue(suggestion.Lift)}
+                    </span>
+                </td>
+                <td>
+                    ${buildChoiceAdvantagesImgsHTML(parseChoiceAdvantage(suggestion["É um reforço contra"][0]))}
+                </td>`;
+        });
+    }
 }
 
+// Função que carrega os resultados salvos no local storage:
 function loadResultsFromSessionStorage() {
     const results = sessionStorage.getItem('suggestions');
 
@@ -358,17 +409,19 @@ function loadResultsFromSessionStorage() {
     }
 }
 
+// Função para esconder as sugestões:
 function hiddenSuggestions() {
     const containerSugestoes = document.querySelector('#container-sugestoes');
     containerSugestoes.style.display = 'none';
 }
 
+// Função para resetar os conteúdos dos slots e inputs:
 function resetSlots() {
     const slots = document.querySelectorAll('.conteudo-slot');
     const barrasPesquisa = document.querySelectorAll('.barra-pesquisa');
     const lupas = document.querySelectorAll('.lupa');
     const weaknessesContainer = document.getElementById('team-weaknesses');
-    // Restaurar os slots para o estado inicial
+
     slots.forEach((slot, index) => {
         const slotElement = document.createElement('img');
         slotElement.classList.add('slot');
@@ -377,7 +430,6 @@ function resetSlots() {
         slot.replaceWith(slotElement);
     });
 
-    // Restaurar os inputs e lupas para o estado inicial
     barrasPesquisa.forEach((barraPesquisa, index) => {
         if (index > 0) {
             barraPesquisa.parentElement.style.opacity = 1;
@@ -390,12 +442,12 @@ function resetSlots() {
         lupa.parentElement.style.pointerEvents = 'auto';
     });
 
-    // Restaurar o estilo da seção
     document.querySelector('.conjunto-barras').style.padding = '0% 2% 2%;';
     weaknessesContainer.style.display = 'none';
 
 }
 
+// Outras funções utilitárias:
 function formatAntecedents(data) {
     return data.map(item => item.toString().replace(',', ', ')).join('<br>');
 }
